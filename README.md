@@ -1,65 +1,61 @@
 # SAM
 
-## The SAM Pattern
+## SAM 패턴
 
-SAM (State-Action-Model) is a new reactive/functional pattern that simplifies Front-End architectures by strictly decoupling the business logic from the view. SAM is based on two founding principles:
+SAM(State-Action-Model)은 비지니스 로직을 뷰에서 엄격하게 분리하여 프론트엔드 아키텍처를 단순화하는 새로운 반응형/함수형 패턴입니다. SAM은 다음 두가지 기본 원칙을 따릅니다.
 
-1. The relationship between the view and the model must be functional
-2. State Mutation must be a first class citizen of the programming model
+1. 뷰와 모델 사이의 관계는 반드시 함수형이어야한다
+2. 상태 변이는 반드시 프로그래밍 모델의 일급 클래스이어야 한다
 
-Let's consider the simplest application and model possible, an application that counts a particular user event such as a mouse click
+
+마우스 클릭과 같은 특정 사용자 이벤트를 계산하는 간단한 애플리케이션과 애플리케이션에 포함된 모델을 살펴봅니다.
 
 ```javascript
 var model = { counter: 0 }
 ```
 
-Most software engineers would implement the application state mutation as an assignment:
+대부분의 소프트웨어 엔지니어는 애플리케이션 상태 변이를 값을 할당하는 방식으로 구현합니다.
 
 ```javascript
 model.counter = model.counter + 1;
 ```
 
-and modern frameworks (Angular2, Reactjs, MobX, Cycle.js...) are designed to "react" to these model changes, often without any consideration for the unit-of-work underlying the application state mutation.
+그리고 최신 프레임워크(Angular2, Reactjs, MobX, Cycle.js...)는 이러한 모델의 변경에 "반응"하기 위해 설계되었습니다. 종종 애플리케이션 상태 변이의 기본 단위의 작업을 고려하지 않습니다.
 
-SAM challenges that model and suggests clearly isolating the application state mutation on the foundation of the Paxos protocol and TLA+:
+SAM은 이러한 모델에 도전하고 Paxos 프로토콜 및 TLA+ 기반 애플리케이션의 상태 변이를 명확하게 격리할 것을 제안합니다.
+
 
 ```javascript
-// actions compute and propose the values
-// the model should mutate to
+// 액션은 모델이 변경해야하는 값을 계산하고 제안합니다.
 let proposed_value = model.counter + 1 ;
 
-// the model accepts or rejects these values
+// 모델은 이러한 값을 허용하거나 거부합니다.
 model.accept({counter: proposed_value})
-
-    // the reactive loop ends by rendering
-    // the view as a pure function of the model
-    .then(
-        (model) => {
-
-            let stateRepresentation = ```Counter: ${model.counter}``` ;
-
-            view.display( stateRepresentation ) ;
-
-        }) ;
+  // 반응 루프는 뷰를 모델의 단순한 함수를 이용해 렌더링합니다
+  .then(
+    (model) => {
+      let stateRepresentation = ```Counter: ${model.counter}``` ;
+      view.display(stateRepresentation) ;
+    }) ;
 ```
 
-SAM is unapologetically driven by simplicity and challenges the complexity of frameworks like Google's Angular or Facebook's React+JSX+Flux/Redux+Saga+Thunk+GraphQL+Relay. One of SAM's key goals is to enable everyone to build beautiful and engaging HTML5/CSS3/JavaScript Web Apps while retaining [what makes React.js so unique](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a#.aoccyh29h):
+SAM은 간결함으로 인하여 "unapologetically" driven 이고 Google의 Angular 또는 Facebook의 React+JSX+Flux/Redux+Saga+Thunk+GraphQL+Relay와 같은 프레임워크의 복잡성에 도전합니다. SAM의 주요 목표 중 하나는 모든 사람들이 아름답고 매력적인 HTML5/CSS3/JavaScript 웹 응용 프로그램을 만들면서 [React.js를 매우 독창적으로 만드는 것](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a#.aoccyh29h)을 유지하는 것입니다.
 
-- Composition
-- Unidirectional data flow
-- Freedom from DSLs
-- Explicit mutation
-- Static mental model
+- 구성
+- 단방향 데이터흐름
+- DSL로부터의 자유
+- 명시적인 변이
+- 정적 mental 모델
 
-SAM is also challenging architecture patterns like [BFF](http://samnewman.io/patterns/architectural/bff/) or the Vertical Slice Pattern which suggest creating view specific APIs, per platform, app, versions of an app...
+SAM은 [BFF](http://samnewman.io/patterns/architectural/bff/) 또는 플랫폼, 앱, 버전별로 뷰 전용 API를 생성하는 애플리케이션과 같은 수직형 슬라이스 패턴과 같은 아키텍처 패턴에도 도전하고 있습니다.
 
-Here is a 10 min introduction:
+10분짜리 안내 동영상 입니다.
 
 <div style="position:relative;height:0;padding-bottom:75.0%"><iframe src="https://www.youtube.com/embed/lMgSS_b98S8?ecver=2" width="480" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 
-You can take a look at the Fishing Game code (index.html) [here](https://hyperdev.com/#!/project/plain-frog) and run it [here](https://plain-frog.hyperdev.space/).
+[낚시 게임 코드](https://hyperdev.com/#!/project/plain-frog)를 살펴보거나 [실행](https://plain-frog.hyperdev.space/) 해보세요
 
-This new pattern was first introduced in an [InfoQ article](http://www.infoq.com/articles/no-more-mvc-frameworks), by [Jean-Jacques Dubray](http://www.ebpml.org/about). A translation of the article is available in [Chinese](http://www.infoq.com/cn/articles/no-more-mvc-frameworks), [French](http://www.infoq.com/fr/articles/no-more-mvc-frameworks), [Japanese](https://www.infoq.com/jp/articles/no-more-mvc-frameworks) and [Russian](https://habrahabr.ru/post/277113/)
+이 새로운 패턴은 [Jean-Jacques Dubray](http://www.ebpml.org/about)가 쓴[InfoQ article](http://www.infoq.com/articles/no-more-mvc-frameworks)에서 처음 발표되었습니다. [중국어](http://www.infoq.com/cn/articles/no-more-mvc-frameworks), [일본어](http://www.infoq.com/jp/articles/no-more-mvc-frameworks), [프랑스어](http://www.infoq.com/fr/articles/no-more-mvc-frameworks), [러시아어](http://www.infoq.com/ru/articles/no-more-mvc-frameworks)로도 번역되어 있습니다.
 
 [Join the disscussion Gitter](https://gitter.im/jdubray/sam)
 
