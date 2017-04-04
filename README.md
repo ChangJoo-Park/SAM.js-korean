@@ -61,25 +61,25 @@ SAM은 [BFF](http://samnewman.io/patterns/architectural/bff/) 또는 플랫폼, 
 
 [Tweets](https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fsam.js.org%2Findex.html&ref_src=twsrc%5Etfw&text=SAM%20-%20State%20%7C%20Action%20%7C%20Model&tw_p=tweetbutton&url=http%3A%2F%2Fsam.js.org%2Findex.html)
 
-### How does SAM work?
+### SAM은 어떻게 동작하나요?
 
-SAM is extremely simple, yet it is built on one of the most robust foundation of computer science (TLA+).
-SAM recommends to factor the business logic underlying a graphical user interface along three elements: actions, model and state:
+SAM은 매우 간단하지만 컴퓨터 과학의 기초 중 하나(TLA+)를 기반으로 합니다.
+SAM은 세가지 요소(액션, 모델 그리고 스테이트)에 따라 GUI의 기본 비지니스 로직을 고려할 것을 권장합니다.
 
-- Actions are triggered by events, their role is to translate an event into proposed values to the model
-- The Model is solely responsible for accepting these values
-- Once accepted, the State function computes the State Representation from the Model property values and makes sure that everyone who needs to "learn"" about the new application state is notified, such as the view which will display the “state representation”
-- Then, the State function computes the next-action-predicate which will invoke any automatic action, given the current application state
+- 액션은 이벤트에 의해 트리거되며, 모델에 제안된 값으로 이벤트를 변환하는 역할을 합니다.
+- 모델은 이러한 값을 적용하는데 전적으로 책임을 갖습니다.
+- 일단 적용되면 스테이트 함수는 모델 속성 값으로부터 스테이트 표현식을 계산하고 "스테이트 표현"을 표시할 보기와 같이 새 애플리케이션 상태에 대해 "배워야(learn)"할 모든 것들에 알립니다.
+- 그 후, 스테이트 함수는 애플리케이션 스테이트가 주어지면 자동 실행하는 액션을 호출할 next-action-predicate를 계산합니다.
 
-Every user or server event is processed as a “step” which involves a propose/accept/learn flow.
-That's it! That's all there is to SAM.
-The pattern is best implemented with the model as a single state tree, a unidirectional data flow and the view as a pure function of the model.
 
-The pattern forms a reactive loop, events trigger actions which present data to the model, which renders the state. Logically, after every step a new "state representation" is created (as a pure function of the model).
+모든 사용자 또는 서버 이벤트는 제안(propose)/승인(accept)/학습(learn) "단계"로 처리됩니다.
+이 것이 SAM의 전부입니다.
+패턴은 단일 스테이트 트리, 단 방향 데이터 흐름 및 모델의 순수 함수를 이용한 뷰로 구현됩니다
+패턴은 반응 루프를 만들고, 이벤트는 모델에 데이터를 표시하는 동작을 트리거하여 스테이트를 렌더링합니다. 논리적으로 매 단계마다 새로운 "스테이트 표현"이 만들어집니다. (이는 모델의 순수 함수를 이용합니다)
 
-The SAM pattern is capable of decoupling the view from the business logic entirely. As we show in many samples below, the view is implemented as a series of stateless components which have no knowledge of the model or even the actions.
+SAM 패턴은 뷰를 비즈니스 로직에서 완전히 분리할 수 있습니다. 아래의 많은 샘플에서 볼 수 있듯이, 뷰는 모델 또는 동작에 대한 지식이 없는 일종의 스테이트리스 컴포넌트로 구현됩니다.
 
-When learning SAM, we recommend that you make a clear distinction between the programming model (State, Actions, Model), the wiring (how the elements of the pattern communicate) and the Architecture (where the elements of the pattern are physically running). SAM supports different wiring approaches and allows you to write code that can easily be migrated from the client to the server or vice versa ([isomorphic javascript](http://sam.js.org/index.html#iso)).
+SAM을 배울 때 프로그래밍 모델(State, Action, Model), 배선(wiring) (패턴 엘리먼트들이 통신하는 방법) 및 아키텍처 (패턴 엘리먼트들이 실제로 실행되는 곳)을 명확히 구분할 것을 권장합니다. SAM은 다양한 배선 방식을 지원하며 클라이언트에서 서버로 또는 반대([동형 자바스크립트](http://sam.js.org/index.html#iso))로 쉽게 마이그레이션할 수 있는 코드를 작성할 수 있습니다.
 
 ![The State-Action-Model (SAM) Pattern](http://sam.js.org/assets/figures/fig6.jpg)
 
