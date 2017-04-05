@@ -83,15 +83,15 @@ SAM을 배울 때 프로그래밍 모델(State, Action, Model), 배선(wiring) (
 
 ![The State-Action-Model (SAM) Pattern](http://sam.js.org/assets/figures/fig6.jpg)
 
-### The View as a Function of the Model
+### 모델의 함수로써의 뷰
 
-When learning SAM, the best starting point is to understand the functional relationship between the view and the model. If you are familiar with React.js you probably noticed that one of the main goals of React's component model is to help you create the components' render function. SAM suggests using the same approach and decomposing the view as a series of pure functions.
+SAM을 익힐 때 가장 좋은 출발점은 뷰와 모델간 기능적 관계를 이해하는 것 입니다. React.js에 익숙하면 React의 컴포넌트 모델의 주요 목표중 하나는 컴포넌트의 렌더링 기능을 만드는 것임을 알 수 있습니다. SAM은 동일한 접근을 하고 있고 뷰를 일련의 순수 함수로 만들 것을 제안합니다.
 
 ```javascript
 V = f( M )
 ```
 
-This concept is extremely simple to implement. I generally implement the front-end components as part of theme singleton:
+이 개념은 매우 간단하게 구현할 수 있습니다. 일반적으로 프론트엔드 컴포넌트를 테마 싱글톤의 일부로 구현합니다.
 
 ```javascript
 var theme = {} ;
@@ -138,11 +138,11 @@ theme.ready = (counter, intents) => `
             </form>`
 ```
 
-With SAM, front-end developers can focus on building the view directly from the model, unencumbered from the underpinning APIs: in other words, answering the qquestion: how does the View look like given any combination of the Model property values? How the values got there is irrelevant. This is the paradigm shift that React introduced in Front-End architectures. SAM does not always eliminate the need for interactions (request/responses), but it tends to keep a balance between reactive and interactive. That functional relationship is probably the hardest thing to get in React and therefore SAM, you have to try it for yourself.
+SAM을 사용하면 프론트엔드 개발자는 API에서 벗어나 모델에서 직접 뷰를 작성하는데 집중할 수 있습니다. 즉 모델 속성 값의 조합을 통해 뷰가 어떻게 보여져야 하는지에 관한 질문에 답해야 합니다. 값을 어떻게 얻었는지는 관련성이 없습니다. 이것이 React가 프론트엔드 아키텍처에서 도입한 패러다임의 변화입니다. SAM은 항상 상호작용(요청/응답)의 필요성을 없애지는 않지만 반작용과 상호작용의 균형을 유지하려는 경향이 있습니다. 이 관계는 React와 SAM에 진입하는데 가장 큰 걸림돌입니다.
 
-There is a fair amount of questions asking "why not use templates"? The reason is relatively simple: templates are interpreters while functions are mini-code generators. Interpreters are limited in what they enable you to express (not to mention you often have to learn a specific syntax that does not translate at all to another template interpreter). On the other hand, code generators are infinitely flexible with hardly any drawbacks. I would personally choose functions over templates any day.
+"템플릿을 사용하지 않는 이유는 무엇입니까?" 라는 질문이 상당히 많이 있습니다. 이유는 간단합니다. 템플릿은 해석기이고 함수는 작은 코드 생성기입니다. 해석기는 표현할 수 있는 기능이 제한적입니다. (다른 템플릿 해석기로 전혀 번역하지 않는 특정 구문을 자주 배울 필요가 없습니다.) 반면에 코드 생성기는 거의 단점이 없어 매우 유연합니다. 개인적으로는 템플릿 이상의 기능을 언제든지 선택할 것 입니다.
 
-SAM allows you to choose the framework of your choice including none, but when using a Vanilla.js implementation, you need to make sure you mitigate the risks of cross-site-scripting.
+SAM을 사용하더라도 원하는 프레임워크를 선택할 수 있으나 Vanilla 구현을 이용하는 때에는 크로스 사이트 스크립팅의 위험을 조심해야합니다.
 
 ### Business Logic
 
