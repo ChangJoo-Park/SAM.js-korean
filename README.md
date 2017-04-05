@@ -144,45 +144,47 @@ SAM을 사용하면 프론트엔드 개발자는 API에서 벗어나 모델에�
 
 SAM을 사용하더라도 원하는 프레임워크를 선택할 수 있으나 Vanilla 구현을 이용하는 때에는 크로스 사이트 스크립팅의 위험을 조심해야합니다.
 
-### Business Logic
+### 비지니스 로직
 
-Not only SAM supports a component-based structure for the View, but SAM enables a complete decoupling of the application logic from the View components. If you are not convinced you can look at the TODO sample below and the View components in the "theme.js" file.
+SAM은 뷰에 대한 컴포넌트 기반 구조를 지원할 뿐만 아니라 SAM을 사용하여 뷰 컴포넌트에서 애플리케이션 논리를 완전히 분리할 수 있습니다. 믿기 힘들다면 아래의 TODO 샘플과 "theme.js" 파일의 뷰 컴포넌트를 확인하세요
 
-> A good Front-End Architecture should enable you to pin your modularized functions to the UI components in the most decoupled way possible. That way the technology backing the components can be swapped out and all your business logic is not in a hostage situation (at the mercy of the next great late framework) - Thomas J. Buhr
+> 좋은 프론트엔드 아키텍처를 사용하면 모듈화 된 기능을 가능한 한 가장 분리된 방식으로 UI 컴포넌트에 고정할 수 있습니다. 이런 식으로 컴포넌트를 뒷받침하는 기술을 스왑 아웃할 수 있으며 모든 비즈니스 로직이 인질로 잡혀있지 않도록 만들 수 있습니다. - Thomas J. Buhr
 
-SAM's factoring of the business logic is based on [TLA+](http://research.microsoft.com/en-us/um/people/lamport/tla/tla.html):
+SAM의 비즈니스 로직은 [TLA+](http://research.microsoft.com/en-us/um/people/lamport/tla/tla.html)에 기반합니다
 
-> TLA+ is based on the idea that the best way to describe things formally is with simple mathematics, and that a specification language should contain as little as possible beyond what is needed to write simple mathematics precisely. TLA+ is especially well suited for writing high-level specifications of concurrent and distributed systems. - Dr. Leslie Lamport
+> TLA+는 사물을 공식적으로 묘사하는 가장 좋은 방법은 단순한 수학을 사용한 다는 것이며, 간단한 언어를 정확하게 작성하는데 필요한 것 이상을 스펙에 포함시켜야한다는 아이디어를 기반으로 합니다. TLA+는 동시 및 분산 시스템의 고급 스펙을 작성하는데 특히 적합합니다. - Dr. Leslie Lamport
 
-If you are interested in learning about TLA+, I found [Stephan Merz's course](http://www.loria.fr/~merz/talks/argentina2005/slides.pdf) the most approachable introduction to TLA+.
+TLA+를 익히는데 관심이 있다면 [Stephan Merz의 강의](http://www.loria.fr/~merz/talks/argentina2005/slides.pdf)를 확인하세요. TLA+에 관한 가장 쉬운 소개 입니다.
 
-TLA+ is a formal specification which can be used describe, analyze and reason about systems, such as:
+TAL+는 다음과 같이 시스템에 관한 설명, 분석 및 추론에 사용할 수 있는 공식 스펙입니다.
 
-- sequential algorithms
-- interactive systems
-- reactive & distributed systems
-- real-time & hybrid systems
-- security-sensitive systems
+- 순차 알고리즘
+- 대화형 시스템
+- 반응 및 분산 시스템
+- 실시간 및 하이브리드 시스템
+- 보안이 중시되는 시스템
 
-TLA+ offers a uniform language where transition system and properties represented as formulas, where Mathematics form the basis for description and analysis of reactive and distributed systems
-
-TLA defines two levels of syntax: action formulas and temporal formulas.
+TLA+는 수식으로 표현되는 트랜지션 시스템 및 속성이 있는 통일된 언어를 제공합니다. 여기서 수학은 반응 및 분산 시스템의 설명 및 분석의 기초를 형성합니다.
+TLA는 두가지 수준의 구문을 정의합니다. 액션 수식과 임시 수식 입니다.
 
 - action formulas describe states and state transitions
 - temporal formulas describe state sequences
+- 액션 수식은 상태 및 상태 전환을 설명합니다.
+- 임시 수식은 상태 시퀀스를 기술합니다.
 
-`Warning` I have been told by readers that it is important to emphasize that SAM does not use the word "State" in the traditional sense of computer science (where a state is an assignment of values to all possible variables). The State-Action elements, in SAM, specify the behavior of the system:
+`경고` SAM이 컴퓨터 과학의 전통적 의미에서 "스테이트"라는 단어를 사용하지 않는다는 점을 강조하는 것이 중요하다는 독자들의 말을 들었습니다. SAM의 스테이트-액션 요소는 시스템의 동작을 지정합니다.
 
-> A State-Action behavior is a sequence:
+> 스테이트-액션 동작은 시퀀스입니다.
 > ```
 >     α1    α2
 > s1 −→ s2 −→ s3 −→  ...
 > ```
-> The step s<sub>i</sub>, α<sub>i</sub>, s<sub>i+1</sub> represents a transition from state si to state s<sub>i+1</sub> that is performed by action α<sub>i</sub>
 
-Please refer to Section 2 of [this paper](http://research.microsoft.com/en-us/um/people/lamport/pubs/state-machine.pdf) from Dr. Lamport for a discussion on State-Action behavior.
+단계 s<sub>i</sub>, α<sub>i</sub>, s<sub>i+1</sub>는 액션 α<sub>i</sub>에 의해 수행되는 상태 s<sub>i</sub>로부터 상태 s<sub>i+1</sub>로의 전이를 나타냅니다.
 
-If you don't like the State-Action-Model terminology, I could have also used the [Paxos protocol](https://en.wikipedia.org/wiki/Paxos_(computer_science)) terminology (PAL, Proposer, Acceptor and Learner):
+스테이트-액션에 관한 토론은 Dr. Lamport의 [논문](http://research.microsoft.com/en-us/um/people/lamport/pubs/state-machine.pdf)의 2절을 참조하세요
+
+State-Action-Model용어가 마음에 들지 않는다면 [Paxos 프로토콜](https://en.wikipedia.org/wiki/Paxos_(computer_science))을 사용할 수도 있습니다. (PAL, Proposer, Acceptor and Learner)
 
 ```
 Client   Proposer      Acceptor     Learner
@@ -197,11 +199,11 @@ X-------->|          |  |  |       |  |  Request
 View     Action       Model         State  (SAM)
 ```
 
-In essence the Paxos protocol roles are exactly the roles of the SAM components: Actions propose values to the Model, which accepts them, which the State accesses (the Learner) to create the State Representation (which is displayed by the View).
+본질적으로 Paxos 프로토콜의 역할은 SAM 컴포넌트의 역할과 정확히 일치합니다. 액션은 스테이트를 받아들이는 모델에 값을 제안합니다. (스테이트에 따라 표시되는 스테이트 표현을 만들기위해 학습자가 접근합니다)
 
-I personally like SAM because it surfaces the concept of "State-Action" behavior, which is at the core of SAM, and leads naturally to creating the "State Representation" (i.e. the View).
+개인적으로 SAM의 핵심인 "스테이트-액션" 행동의 개념을 묘사하고 자연스럽게 "스테이트 표현(뷰)"를 자연스럽게 만들기때문에 좋아합니다.
 
-So, for all intent and purposes, please be warned that SAM's Model is the assignment of values to all possible variables of the application state, while SAM's State, which is sometimes associated to the "control state" (such as "started" and "stopped" are two control states of a car), refers to a function that computes the current (control) state of the system. In general, the "State" of a system controls which actions are allowed at any given point in time.
+따라서 모든 의도와 목적을 위해 SAM의 모델은 애플리케이션 상태의 모든 가능한 변수에 값을 할당하는 반면 SAM의 스테이트는 "제어 상태" (예: "시작됨", "정지함"은 자동차의 두가지 제어 상태입니다.)를 계산하는 함수를 말합니다. 일반적으로 시스템의 "스테이트"는 특정 시점에서 허용하는 작업을 제어합니다.
 
 ### Actions
 
