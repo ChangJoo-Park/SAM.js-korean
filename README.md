@@ -167,8 +167,6 @@ TAL+는 다음과 같이 시스템에 관한 설명, 분석 및 추론에 사용
 TLA+는 수식으로 표현되는 트랜지션 시스템 및 속성이 있는 통일된 언어를 제공합니다. 여기서 수학은 반응 및 분산 시스템의 설명 및 분석의 기초를 형성합니다.
 TLA는 두가지 수준의 구문을 정의합니다. 액션 수식과 임시 수식 입니다.
 
-- action formulas describe states and state transitions
-- temporal formulas describe state sequences
 - 액션 수식은 상태 및 상태 전환을 설명합니다.
 - 임시 수식은 상태 시퀀스를 기술합니다.
 
