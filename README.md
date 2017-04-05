@@ -203,23 +203,23 @@ View     Action       Model         State  (SAM)
 
 따라서 모든 의도와 목적을 위해 SAM의 모델은 애플리케이션 상태의 모든 가능한 변수에 값을 할당하는 반면 SAM의 스테이트는 "제어 상태" (예: "시작됨", "정지함"은 자동차의 두가지 제어 상태입니다.)를 계산하는 함수를 말합니다. 일반적으로 시스템의 "스테이트"는 특정 시점에서 허용하는 작업을 제어합니다.
 
-### Actions
+### 액션
 
-Actions are pure functions which accept a dataset (event) and return a dataset (proposal). The purpose of a function is to compute the values we want the model to accept. There is nothing else to it. In Redux for instance, "actions" are a data structure, which are a lot closer to an intent or event than an action. This is a fundamental difference between Redux and SAM because in Redux the reducer creates an unnecessary and unwanted coupling between the model mutations and the logic that translates intents into model property values.
+액션은 데이터셋(이벤트)를 받아들이고 데이터셋(제안)를 반환하는 순수 함수입니다. 함수의 목적은 모델이 받아들일 수 있는 값을 계산하는 것 입니다. 이 밖에 다른 것은 없습니다. 예를 들어 Redux에서 "액션"은 데이터 구조로 작업보다 의도 또는 이벤트에 훨씬 가깝습니다. Redux에서는 리듀서가 모델 변이와 의도를 모델 속성으로 변환하는 로직 사이에 원치 않는 결합을 생성합니다. 이는 Redux와 SAM의 근본적인 차이점 입니다.
 
 ```javascript
 function action(data,present) {
-  // compute the values we want the model to mutate to
+  // 모델이 변이되기를 바라는 값을 계산
   var data_ = the_actual_pure_function_implementing_the_action(data) ;
 
-  // present these values to the model
+  // 모델에 값을 제안
   present(data_) ;
 
-  // since we are in a reactive loop, the action returns nothing
+  // 반응 루프에 있기 때문에 아무것도 반환하지 않음
   }
 ```
 
-Actions are responsible for implementing context specific logic. If we take the example of a "change of address" action, we might implement some context specific rules, such as when there is no country specified in the input dataset, the default country is Australia, while the model is responsible for the integrity of a customer address which requires a country value. In the context of SAM, actions play another important role with respect to invoking 3rd party APIs. For instance, we can define an action which will invoke a 3rd party validation service, which given an address, returns the postal address (or an error). It is then the postal address which is presented to the model.
+액션은 컨텍스트에 국한되는 로직을 구현할 책임이 있습니다. "주소 변경" 작업의 예에서 입력 데이터 집합에 지정된 국가가 없는 경우와 같이 컨텍스트 특정 규칙을 구현할 수 있습니다. 국가 값이 필요한 고객주소 모델은 무결성을 담당합니다 기본 국가는 호주입니다. SAM 컨텍스트에서 작업은 다른 API 호출과 관련하여 또 다른 중요한 역할을 합니다. 예를 들어 주소가 주어지면 우편 주소(또는 오류)를 반환하는 제 3자 유효성 검사 서비스를 호출하는 작업을 정의할 수 있습니다. 이는 모델에 표시되는 우편 주소 입니다.
 
 ```javascript
 function changeOfAddress(address,present) {
@@ -233,7 +233,7 @@ function changeOfAddress(address,present) {
 }
 ```
 
-Action logic can typically be reused across models, you can even think some companies will start offering SAM actions following a SaaS model. A "change of address" action, which returns a postal address given user data is highly reusable, across the enterprise.
+액션 로직은 일반적으로 모델 간 재사용할 수 있으며 SasS 모델을 따르는 SAM 액션을 제공하는 회사가 있다고 생각할 수도 있습니다. 사용자 데이터가 주어진 경우 우편 주소를 반환하는 "주소 변경" 작업은 엔터프라이즈 수준으로 재사용 가능합니다.
 
 
 ### Model
