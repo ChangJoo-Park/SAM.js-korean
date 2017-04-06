@@ -907,19 +907,18 @@ theme.statSummary = function(fa,label,number,link,linkLabel,color) {
 } ;
 ```
 
-## Code Samples
+## 예제 코드
 
-### Donate
+### 기부
 
-We accept donations to fund the development of code samples,
-100% of the proceeds is used to hire talented and passionate developers.
+코드 예제 개발을 위한 기부금을 받고 있습니다. 수익금의 100%는 재능있고 열정적인 개발자를 고용하는데 사용됩니다.
 
 ### Rocket Launcher
 
-- [Vanilla JavaScript and HTML](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) - You can run that sample [here](https://bb.githack.com/!api/2.0/snippets/jdubray/9dgKp/a1dd9b8b9f241600ad108ef741845241c31c9fce/files/rocket.html) (courtesy of [Jose Pedro Dias](https://twitter.com/jose_pedro_dias))
+- [Vanilla JavaScript와 HTML](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) - [이 곳](https://bb.githack.com/!api/2.0/snippets/jdubray/9dgKp/a1dd9b8b9f241600ad108ef741845241c31c9fce/files/rocket.html)을 확인하세요 ([Jose Pedro Dias](https://twitter.com/jose_pedro_dias))
 - [MobX + React](https://github.com/jdubray/sam-samples/tree/master/mobx-react-typescript-boilerplate-master) ([Fred Daoud](http://www.linkedin.com/in/fredericdaoud))
 - [Cycle.js](http://codepen.io/foxdonut/pen/XXPwRe) ([Fred Daoud](http://www.linkedin.com/in/fredericdaoud))
-- [Snabbdom](https://github.com/JosePedroDias/sam_rocket_w_snabbdom) ([Jose Pedro Dias](https://twitter.com/jose_pedro_dias)). You can run the sample [here](https://josepedrodias.github.io/sam_rocket_w_snabbdom/index.html).
+- [Snabbdom](https://github.com/JosePedroDias/sam_rocket_w_snabbdom) ([Jose Pedro Dias](https://twitter.com/jose_pedro_dias)). [이 곳](https://josepedrodias.github.io/sam_rocket_w_snabbdom/index.html)을 확인하세요.
 - [Knockout.js](https://jsfiddle.net/80xzt848/1/) ([Troy Ingram](http://blog.troyingram.us/))
 - [React+Redux(following the SAM pattern)](https://github.com/gunar/sam-redux) ([Gunar Gessner](https://twitter.com/gunar))
 - [Angular (following the SAM pattern)](https://github.com/brusand/sam-angular) (Bruno Darrigues)
@@ -928,35 +927,37 @@ We accept donations to fund the development of code samples,
 - [Angular2 with Dynamic templates and ComponentFactory](https://github.com/jdubray/sam-samples/tree/master/angular2-rocket-2.0.0)
 - [Vanilla.js+Redux](http://codepen.io/foxdonut/pen/BzQzBx?editors=1010) ([Fred Daoud](http://www.linkedin.com/in/fredericdaoud))
 
-### Draw Rectangle
+### 사각형 그리기
 
 [Vanilla.js](https://hyperdev.com/#!/project/plain-frog)
 
 ### ToDo
 
-- [Vanilla JavaScript and HTML](https://bitbucket.org/snippets/jdubray/zr9r6/item-list)
+- [Vanilla JavaScript와 HTML](https://bitbucket.org/snippets/jdubray/zr9r6/item-list)
 - [Vue.js](http://codepen.io/msolovyov/pen/qbvYpv?editors=1010)([](http://sam.js.org/index.html))
 - [TODOMVC Challange (HTML+Vanilla JS, both ES5 and ES6)](https://github.com/jdubray/sam-samples/tree/master/todomvc-app)
 - [Angular2 Admin Template with ToDo component ](https://github.com/jdubray/sam-samples/tree/master/angular2-admin-master-2.0.0)
 
-### Blog
+### 블로그
 
 [Node.js / Isomorphic JavaScript - BootStrap](https://github.com/jdubray/sam-samples/tree/master/crud-blog)
 
-### Contact
+### 연락 폼
 
-[Simple Web site with Contact App (Node.js+HTML)](https://bitbucket.org/snippets/jdubray/jna7B/sam-sample-app-on-nodejs)
+[Contact 앱을 가지는 간단한 예제 애플리케이션 (Node.js+HTML)](https://bitbucket.org/snippets/jdubray/jna7B/sam-sample-app-on-nodejs)
 
-### Themes
+### 테마
 
-- [A simple Web app built on the SB Admin template (Node.js+HTML)](https://github.com/jdubray/sam-samples/tree/master/sbadmin-template)
-- [A simple Web Site](https://github.com/imnutz/sam-exmachina) (with actions) built on the [Ex-Machina template](http://templated.co/exmachina) (HTML+Snabbdom) (@imnutz / Son Ngoc)
+- [SB Admin 템플릿을 이용한 웹 앱 (Node.js+HTML)](https://github.com/jdubray/sam-samples/tree/master/sbadmin-template)
+- [간단한 웹 사이트](https://github.com/imnutz/sam-exmachina) (with actions) built on the [Ex-Machina template](http://templated.co/exmachina) (HTML+Snabbdom) (@imnutz / Son Ngoc)
 - [A Vanilla ES6 Builerplate Project](https://github.com/jdubray/sam-samples/tree/master/vanilla-es6-boilerplate-project)
-- [A full stack, vanilla.js/Node.js of the Bootstrap Clean Blog project](https://github.com/jdubray/startbootstrap-clean-blog) (ES6)
+- [풀스택, vanilla.js/Node.js을 이용한 부트스트랩 클린 블로그 프로젝트](https://github.com/jdubray/startbootstrap-clean-blog) (ES6)
 
-### Others
+### 기타
 
-- A dual-client (session based) [Tic-Tac-Toe game](https://github.com/509dave16/sam-tic-tac-toe) with a [SAM-based engine](https://github.com/509dave16/tic-tac-toe-engine) (React/Redux+Firebase) via [David Fall](https://github.com/509dave16) A simple Counter App using [Flyd](https://github.com/imnutz/sam-flyd) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
+- [SAM기반 엔진](https://github.com/509dave16/tic-tac-toe-engine)을 이용한 이중 클라이언트 (세션 기반) [Tic-Tac-Toe game](https://github.com/509dave16/sam-tic-tac-toe) [SAM기반 엔진](https://github.com/509dave16/tic-tac-toe-engine)
+- (React/Redux+Firebase) via [David Fall](https://github.com/509dave16)
+- A simple Counter App using [Flyd](https://github.com/imnutz/sam-flyd) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
 - [How to use Mocha and Chai] to write unit tests (BDD) for SAM implementations (via Robert Blixt)
 A contact manager web application built with [SAM and CSP](https://github.com/imnutz/sam-csp) ([Communicating Sequential Processes](http://jlongster.com/Taming-the-Asynchronous-Beast-with-CSP-in-JavaScript)) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
 - [A simple CRUD application](https://github.com/jdubray/sam-samples/tree/master/crud-blog-lambda) running on AWS Lambda and DynamoDB for session management
@@ -965,15 +966,15 @@ A contact manager web application built with [SAM and CSP](https://github.com/im
 - [Another Parent/Child](https://github.com/jdubray/sam-samples/tree/master/vanilla-child-instance) sample in vanilla.js
 - [A CSS Spinner](https://github.com/jdubray/sam-samples/blob/master/react-spinner/index.html) using React/JSX without "looping" through the model
 
-This is what Jonathan Siu, Startup Consultant, had to say about SAM:
+스타트업 컨설턴트인 Jonathan Siu가 SAM에 관해 말한 내용입니다
 
 ![](http://sam.js.org/assets/figures/fig0.jpg)
 
-## Frameworks
+## 프레임워크
 
-André Statlz has written a great paper comparing the different [Unidirectional User Interface Architectures](http://staltz.com/unidirectional-user-interface-architectures.html. The pattern closest to SAM is [Famous](https://blog.famous.org/introducing-the-famous-framework/), but unfortunately, they mutate the model directly from the actions (events in Famous' terms) and they do not support a nap() function.
+André Statlz는 다양한 [Unidirectional User Interface Architectures](http://staltz.com/unidirectional-user-interface-architectures.html)에 관한 논문을 저술했습니다. SAM과 가장 가까운 패턴은 [Famous](https://blog.famous.org/introducing-the-famous-framework/)입니다. 불행하게도 이들은 모델을 직접 변경하고 nap() 함수를 지원하지 않습니다.
 
-This [talk from Andrew Clark at the React 2016 Conference](https://www.youtube.com/watch?v=Pm0uwncSCo4&feature=youtu.be&t=14366) offers some great perspective on the different approaches (React,Cycle,Elm) starting with a simple formula...:
+[React 2016 컴퍼런스에서 Andrew Clark의 발표](https://www.youtube.com/watch?v=Pm0uwncSCo4&feature=youtu.be&t=14366)는 다양한 접근 방식(React, Cycle, Elm)에 대한 간단한 공식으로 시작하는 훌륭한 전망을 말합니다.
 
 ```javascript
 V = f( M )
@@ -983,27 +984,27 @@ V = f( M )
 
 | React + Redux + Thunks + Sagas | SAM |
 | :------------------------------ |:---|
-|Single State Tree               |Single Model Tree |
-|State is read-only  | Model is presented with new proposed values|
-|Reducers are pure functions Reducers have access to full scope of state when processing actions|Actions are pure functions with respect to the model Actions have no access to the model to compute the values presented to the model|
-|Store is updated with the output of the reducer function Listeners are notified of the update|State Representation is created after the model has mutated Next-Action Predicate evaluates whether an automatic action needs to be triggered|
-|View is a function of the state|State representation is a function of the model|
-|Next action predicate (nap) is implemented as a Saga which couples many operations and generally relies on local state as shown in [this implementation of the Rocket Launcher](https://gist.github.com/yelouafi/0385402a453b1fdb5cb0).|The Next Action Predicate is a pure function of the model which computes the current (control) state of the system and derives the next-action.|
+|단일 상태 트리               |단일 모델 트리 |
+|읽기전용 스테이트 | 모델에 새로운 값 제시|
+|Reducer는 순수 함수입니다. Reducer는 액션을 처리할 때 전체 범위 상태에 액세스 가능 | 액션은 모델과 관련된 순수 함수입니다. 액션은 모델에 액세스할 수 없으므로 모델에 제시된 값을 계산합니다.|
+|저장소가 Reducer 함수의 결과로 갱신되고 리스너에 갱신을 알립니다. | 스테이트 표현은 모델 변경 후 만들어집니다. 다음 작업 위치는 다음 액션을 트리거해야하는지 여부를 평가합니다. |
+| 뷰는 스테이트의 함수입니다. | 스테이트 표현은 모델의 함수 입니다. |
+| 다음 작업 술어 (nap)은 많은 작업을 연결하는 Saga로 구현되며 일반적으로 [Rocket Launcher 구현](https://gist.github.com/yelouafi/0385402a453b1fdb5cb0)처럼 로컬 상태에 의존합니다.| 다음 액션 술어는 시스템의 현재 제어 스테이트를 계산하고 다음 조치를 유도하는 모델의 순수한 함수입니다.|
 
-The main issues I see with this framework (as a set of libraries) are:
+이 프레임워크에서(라이브러리 집합과 같이) 볼 수 있는 주요 문제점은 다음과 같습니다.
 
-- Redux combines the logic that computes the values with which you would update the model with the logic that decides whether the model accepts these values or not.
-- As a corollary it couples the interface of the reducers to the model. One of the key roles of actions is to adapt the View-Model interface in ways that makes the model insensitive to the view semantics. The Reducers' interfaces are directly shapped by the view, which is an anti-pattern.
-- Anemic actions are the default in Redux, you need to add the "thunk" library to be able to use functions as actions
-- Sagas are stateful by definition and their imperative style makes it difficult to reason about what is the next action that will occur.
-
+- Redux는 모델을 업데이트할 때 사용할 값을 계산하는 논리와 모델이 이 값을 허용하는지 여부를 결정하는 로직을 결합합니다.
+- 결과로서의 모델은 Reducer의 인터페이스를 모델에 연결합니다. 액션의 핵심 역할 중 하나는 모델을 뷰에 둔감하게 만드는 방식으로 뷰-모델 인터페이스를 적용하는 것 입니다. Reducer의 인터페이스는 뷰에 의해 직접적으로 만들어지며 이는 안티패턴입니다.
+- 빈약한 액션이 Redux에서 기본값이므로 함수를 액션으로 사용하려면 "thunk" 라이브러리를 추가해야합니다.
+- Saga는 정의에 따라 스테이트가 바뀌며 명령형 방식은 발생 직후 다음 액션이 무엇인지 추론하기 어렵게 만듭니다.
 
 
 ### Meiosis
 
-[Meiosis](https://foxdonut.gitbooks.io/meiosis-guide/content/sam.html) is a library build by Fred Daoud that is well aligned with the SAM pattern. The library's core focus is to help organize the data flow of web applications. The general idea behind Meiosis is to start with a model and write a function that creates the view. When you want a looser coupling between the view and the model, you can optionally configure an "actions object" which translates view events into model proposals. Once the proposal is accepted by the model, Meiosis calls the view function with the updated model. You can also define a function to determine if another action should be automatically triggered, given the new application state. Meiosis is designed to work with plain JavaScript functions which, it wires together, without tying your code to the library. Last, but not least, you can switch from one Web framework to another and by changing the view code. The remainder of the code (the model, receiving proposals, actions, and so on) remains the same.
+[Meiosis](https://foxdonut.gitbooks.io/meiosis-guide/content/sam.html)는 Fred Daoud가 SAM 패턴과 잘 조화를 이룬 라이브러리입니다. 라이브러리의 코어 목표는 웹 애플리케이션의 데이터 흐름을 조절하는 것 입니다. Meiosis의 일반적인 개념은 모델로 시작하여 뷰를 만드는 함수를 만드는 것 입니다. 뷰와 모델 사이의 느슨한 커플링을 원하면 뷰 이벤트를 모델 제안으로 변환하는 "액션 객체"를 선택적으로 구성할 수 있습니다. 제안이 모델에 의해 승인되면 Meiosis는 갱신된 모델로 뷰 함수를 호출합니다. 새 애플리케이션 스테이트가 주어지면 다른 액션이 자동으로 트리거되어야 하는지 여부를 결정하는 함수를 정의할 수도 있습니다. Meiosis는 코드를 라이브러리에 묶지 않고 함께 연결되는 일반 JavaScript와 함께 작동할 수 있도록 설계하였습니다. 한 웹 프레임워크에서 다른 웹 프레임워크로 코드를 전환할 수 있습니다.
+나머지 코드(모델, 제안 수신, 액션 등)은 그대로 유지합니다.
 
-## Where can I find more information?
+## 더 많은 정보는 어디서 얻을 수 있습니까?
 
 - Jean-Jacques Dubray, InfoQ, Feb. 2016 "[Why I no longer use MVC Frameworks?](https://www.infoq.com/articles/no-more-mvc-frameworks)"
 - Gunar Gessner, Jean-Jacques Dubray, InfoQ, Oct. 2016 "[Lessons learned in implementing the SAM pattern](https://www.infoq.com/articles/sam-lessons-learned-front-end-reactive-architectures)"
@@ -1017,7 +1018,7 @@ The main issues I see with this framework (as a set of libraries) are:
 - Greg Young, "[CQRS and Event Sourcing](https://www.youtube.com/watch?v=JHGkaShoyNs)"
 - SmartDraw "[Why we ditched AngularJS](https://blog.smartdraw.com/why-we-ditched-angular-js/)"
 
-## Who is using SAM?
+## 누가 SAM을 사용합니까?
 
 - [ebpml.org](http://www.ebpml.org/about):  The about page is built from an off-the-shelf template, the model populates itself with the ebpml.org RSS feed, the contact form invokes an action.
 - [Gliiph](http://www.gliiph.com/):  Gliiph is a new kind of Web platform that brings together content, data and APIs to deliver the next generation Web apps
