@@ -236,11 +236,11 @@ function changeOfAddress(address,present) {
 액션 로직은 일반적으로 모델 간 재사용할 수 있으며 SasS 모델을 따르는 SAM 액션을 제공하는 회사가 있다고 생각할 수도 있습니다. 사용자 데이터가 주어진 경우 우편 주소를 반환하는 "주소 변경" 작업은 엔터프라이즈 수준으로 재사용 가능합니다.
 
 
-### Model
+### 모델
 
-The model contains all the application state and (logically) exposes a single method: present(data). The model is responsible for accepting (or rejecting) the effects of an action. The model is where integrity rules get enforced. In other words, actions are generally triggered with some context specific data, they do not have access to the application state, for instance, when you implement a "change password" action, the action will check if the password is valid in the context of the request, but the model might enforce additional integrity rules, such that you cannot use a password that matches any of your last three passwords.
+모델은 모든 애플리케이션의 상태를 가지고 있으며 논리적으로 단일 메소드인 present(data)를 노출합니다. 모델은 액션의 효과를 수락 (또는 거부)할 책임이 있습니다. 모델은 무결성 규칙이 적용되는 곳 입니다. 즉, 액션은 일반적으로 컨텍스트 특정 데이터로 트리거되며 애플리케이션 상태에 액세스할 수 없습니다. 예를 들어 "비밀번호 변경" 액션을 구현할 때 비밀번호의 유효성을 검사합니다. 요청을 보냈지만 모델에서는 마지막 3개의 암호 중 하나와 일치하는 암호를 사용할 수 없도록 추가적인 무결성 규칙을 적용할 수 있습니다.
 
-The model is also solely responsible for the persistence of the application state. As such, the Model's architecture may follow the [Event/Command Sourcing Pattern](https://github.com/eventstore/eventstore/wiki/Event-Sourcing-Basics#event-sourcing) with respect to the data the it accepts
+모델은 애플리케이션 상태의 지속성에 대해서도 단독으로 책임이 있습니다. 이와 같이 모델의 아키텍처는 수용하는 데이터와 관련하여 [이벤트/커맨드 소싱 패턴](https://github.com/eventstore/eventstore/wiki/Event-Sourcing-Basics#event-sourcing)을 따를 수 있습니다.
 
 ```javascript
 model.present = function(data, render) {
@@ -249,10 +249,10 @@ model.present = function(data, render) {
       model.billingAddress = model.billingAddress || data.address ;
   }
 
-  // trigger the state representation rendering
+  // 스테이트 표현 렌더링을 트리거
   render(model) ;
 
-  // since we are in a reactive loop, the present method returns nothing
+  // 반응 루프에 있기 때문에 현재 메소드는 아무것도 리턴하지 않습니다
 }
 ```
 
