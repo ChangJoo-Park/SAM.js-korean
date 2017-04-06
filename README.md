@@ -583,11 +583,11 @@ state.reservations[0] = "@mweststrate";
 state.nrOfSeats = 750;
 ```
 
-### Time Travel
+### 시간 여행(Time Travel)
 
-Gunar Gessner has implemented [a client-side "Time Travel" dev tool](https://github.com/sam-js/sam-devtools) that enables you to take snapshots of the model after every action is processed and then restore the state of the system with a given snapshot.
+Gunar Gessner는 모든 액션이 처리된 후 모델의 스냅샷을 찍은 다음 주어진 시스템의 상태를 복원할 수 있는 [클라이언트 측 "시간여행" 개발도구](https://github.com/sam-js/sam-devtools)를 구현했습니다.
 
-The SAFE container implements [both a client-side and server-side "Time Travel" dev tool](https://github.com/jdubray/sam-safe/blob/master/README.md#time-travel).
+SAFE 컨테이너는 [client측과 server측 "시간여행" 개발도구](https://github.com/jdubray/sam-safe/blob/master/README.md#time-travel)를 모두 구현합니다.
 
 <div style="position:relative;height:0;padding-bottom:75.0%"><iframe src="https://www.youtube.com/embed/o7ZIG4jT0xM?ecver=2" width="480" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 
