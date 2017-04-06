@@ -401,37 +401,37 @@ actions.intents = {
 V = f( vm(M) )
 ```
 
-### Wiring
+### 배선(Wiring)
 
-The SAM pattern can be described as a Mathematical expression (formula):
+SAM 패턴은 수학 표현식으로 설명할 수 있습니다.
 
 ```javascript
 V = S( vm(M.present(A(data))), nap(Model) )
 ```
 
-However, that expression is only a logical expression that describes the sequence in which the elements of the pattern are invoked. The expression itself is not representative of the Reactive Flow or the different wiring options.
+그러나 이 표현식은 패턴 엘리먼트가 호출되는 순서를 설명하는 논리적 ㅍ현식일 뿐입니다. 표현 자체는 반응 흐름 또는 다른 배선 옵션을 나타내지 않습니다.
 
-SAM can be implemented in the browser ([like React and Redux](http://andrewhfarmer.com/react-ajax-best-practices)), but one of SAM's advantages is that the elements of the pattern can be distributed and composed in virtually any topology. So there is not a single way to wire the pattern.
+SAM은 브라우저 ([React와 Redux와 유사](http://andrewhfarmer.com/react-ajax-best-practices))에서 구현할 수 있지만 SAM의 장점 중 하나는 사실상 모든 토폴로지에서 패턴의 엘리먼트를 배포하고 구성할 수 있다는 것 입니다. 따라서 패턴을 연결하는 방법은 하나가 아닙니다.
 
-You should also keep in mind that SAM is a reactive pattern so there is never a response that is expected: The view triggers an action, which presents is dataset to the model, which asks the state to create a state representation (i.e. View). The new state representation is just that, a new view of the current state of the model. It is **not** a response to the original view.
+또한 SAM은 반응적인 패턴이므로 예상되는 응답이 결코 없다는 것을 명심해야합니다. 뷰는 모델에 데이터 세트인 액션을 트리거 합니다. 이 액션은 스테이트에 스테이트 표현(예: 뷰)를 만들도록 요청합니다. 새로운 스테이트 표현은 모델의 현재 상태에 대한 새로운 뷰입니다. 원래의 견해에 대한 응답이 **아닙니다**.
 
-Let's start with a sample where running SAM exclusively in a single process (e.g. the browser, perhaps assuming the model will communicate with a persistent store).
+SAM을 독점적으로 단일 프로세스(예: 브라우저가 모델이 영구 저장소와 통신한다고 가정)로 실행되는 샘플을 보겠습니다.
 
-The model can be defined as a singleton, the actions as pure functions of a dataset, the state (stateRepresentation() and nap()) as a pure function of the model. Here is an example of wiring achieved with functional wrappers.
+모델은 싱글톤, 데이터세트의 순수한 함수로, 스테이트(stateRepresentation() 및 nap())를 모델의 순수 함수로 정의할 수 있습니다. 다음은 함수형 래퍼로 달성한 배선의 예입니다.
 
 ```javascript
-// Model is a singleton /////////////////////////////////////////////
+// 모델은 싱글톤입니다  /////////////////////////////////////////////
 var model = {} ;
 
 model.present = function(data) {
-  // Logic that accepts or rejects the proposed values
+  // 제안된 값을 허용하거나 거부하는 로직
   // ...
 
-  // -> Reactive Loop
+  // -> 반응 루프
   state(model) ;
 
-  // persist the new state
-  // this is generally guarded and optimized
+  // 새 스테이트 유지
+  // 일반적으로 보호/최적화 됨
   model.persist() ;
 } ;
 
@@ -439,32 +439,32 @@ model.persist = function() {
 
 } ;
 
-// Actions are pure functions /////////////////////////////////////////////
+// 액션은 순수 함수입니다. /////////////////////////////////////////////
 function action1(data) {
-  // Logic that prepares the data to be presented to the model
+  // 모델에 표시할 데이터를 준비하는 로직
   // ...
 
-  // -> Reactive Loop
+  // -> 반응 루프
   present(data) ;
 
-  // to avoid a page reload
+  // 페이지 새로고침 방지
   return false ;
 }
 
 function action2(data) {
-  // Logic that prepares the data to be presented to the model
+  // 모델에 표시할 데이터를 준비하는 로직
   // ...
 
-  // -> Reactive Loop
+  // -> 반응 루프
   present(data) ;
 
-  // to avoid a page reload
+  // 페이지 새로고침 방지
   return false ;
 }
 
-// State is a pure function /////////////////////////////////////////////
+// 스테이트는 순수 함수입니다. /////////////////////////////////////////////
 function state(model) {
-  // the state behavior is hard wired
+  // 스테이트는 강하게 연결되어 있습니다
   stateRepresentation(model) ;
   nap(model) ;
 }
@@ -477,9 +477,9 @@ function nap(model) {
 }
 
 
-// View is a pure function /////////////////////////////////////////////
+// 뷰는 순수 함수입니다.  /////////////////////////////////////////////
 function someView(model) {
-  // render the view
+  // 뷰를 렌더합니다
   var output = '' ;
   // ...
 
@@ -487,13 +487,13 @@ function someView(model) {
   output = output + 'onSubmit="JavaScript:return action1({data:data});'
 
   // ...
-  // -> Reactive Loop
+  // -> 반응 루프
   display(output) ;
 }
 
-// Wiring /////////////////////////////////////////////
+// 배선 /////////////////////////////////////////////
 //
-// Actions are known to the stateRepresentation() and nap()
+// 액션은 stateRepresentation()과  nap()에 알려져 있습니다
 //
 // Actions -> Model
 function present(data) {
@@ -513,7 +513,7 @@ function display(view) {
 }
 ```
 
-Of course, JQuery event handlers could also be used:
+물론 jQuery 이벤트 핸들러를 사용할 수도 있습니다.
 
 ```javascript
 ...
@@ -532,7 +532,7 @@ $('#login').click(function() {
 })
 </script>
 ...
-// another option is to implement the state, model and actions on the server:\
+// 또 다른 옵션은 서버에 스테이트, 모델 및 액션을 구현하는 것 입니다.
 <script type="text/javascript">
 $('#login').click(function() {
   var session = $.post( "http://authserver/v1/login", { username: $( "#username" ).val(), password:$( "#password" ).val() } ) ;
@@ -544,7 +544,7 @@ $('#login').click(function() {
 </script>
 ```
 
-One can also use [RxJS](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/events.md) to wire events to actions.
+[RxJS](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/events.md)를 사용하여 이벤트를 액션에 연결할수도 있습니다.
 
 ```javascript
 var result = document.getElementById('submit');
@@ -557,23 +557,23 @@ var subscription = source.subscribe(function (e) {
 });
 ```
 
-Wiring is an important concern when implementing the pattern. For instance, the [mobx framework](https://medium.com/@mweststrate/pure-rendering-in-the-light-of-time-and-state-4b537d8d40b1#.q91pjr4c7) wires individual property value changes to the view rendering function, which is not representative of the behavior of the system and the processing of an action as a unit of work. As you can see in the example tab below, the view renders for state data changes:
+배선은 패턴을 구현할 때 중요합니다. 예를 들어 [mobx framework](https://medium.com/@mweststrate/pure-rendering-in-the-light-of-time-and-state-4b537d8d40b1#.q91pjr4c7)는 개별 속성 값 변경을 뷰 렌더링 기능으로, 시스템의 액션 및 작업 단위로서의 처리를 나타내지 않습니다. 아래 예제 탭에서 볼 수 있듯이 뷰는 스테이트 데이터 변경내용을 렌더링합니다.
 
 ```javascript
-// The state of our app
+// 앱의 스테이트
 var state = mobx.observable({
   nrOfSeats : 500,
   reservations : [],
   seatsLeft : function() { return this.nrOfSeats - this.reservations.length; }
 });
 
-// The UI; a function that is applied to the state
+// UI: 스테이트에 적용되는 함수
 var ui = mobx.computed(function() {
   return "\nSeats left: " + state.seatsLeft +
       "Attendees: " + state.reservations.join(", ") + "";
 });
 
-// Make sure the UI is 'rendered' whenever it changes
+// 변경될 때마다 UI가 '렌더링'되는지 확인하세요
 ui.observe(function(newView) { console.log(newView) }, true);
 
 // Put in some test data
