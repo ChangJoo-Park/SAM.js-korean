@@ -640,22 +640,18 @@ V = Ss( Ms.present( As(Mc) )
 
 ![](http://sam.js.org/assets/figures/fig11.jpg)
 
-### State Machines
+### 스테이트 머신
 
-> Computation is a major topic of computer science,
-and almost every object that computes is naturally viewed as a state machine.
-Yet computer scientists are so focused on the languages used to
-describe computation that they are largely unaware that those languages
-are all describing state machines - [Dr. Leslie Lamport](http://research.microsoft.com/en-us/um/people/lamport/pubs/state-machine.pdf)
+> 계산은 컴퓨터 과학의 주요 주제이며, 계산되는 거의 모든 객체는 자연스럽게 스테이트 머신으로 간주됩니다. 그러나 컴퓨터 과학자들은 계산을 설명하기 위해 사용된 언어에 중점을 두고 있기 때문에 이들 언어 모두 스테이트 머신을 묘사한다는 사실을 거의 모릅니다.  - [Dr. Leslie Lamport](http://research.microsoft.com/en-us/um/people/lamport/pubs/state-machine.pdf)
 
-SAM is particularly well aligned with the traditional semantics of State Machines except for one simple, yet fundamental difference. Traditional State Machine semantics imply that the actions somehow connect two states, so State Machines are described as a series of tuples such as:
+SAM은 단순하지만 근본적인 차이점을 제외하고는 스테이트 머신의 전통적인 의미와 잘 일치합니다. 전통적인 스테이트 머신 의미론은 액션이 어떻게든 두가지 스테이트를 연결한다는 것을 의미하므로 스테이트 머신은 다음과 같은 일련의 튜플로 설명됩니다.
 
 ```
 initialState = S0
 (S0,A01,S1), (S1,A12,S2)...
 ```
 
-This definition is somewhat of an approximation: it is not the action that decides the resulting state, it is the model, which, once the action has been applied (its value have been accepted, or not) that decides the resulting state (Aik are the allowed actions in a given state Si) :
+이 정의는 다소 근사치를 보입니다. 결과 상태를 결정하는 액션이아닌 모델이므로 결정과 상태를 결정하는 액션(주어진 상태에서 상태 Si에서 허용된 액션)이 적용(값을 받거나 혹은 아니거나)됩니다.
 
 ```
 initialState = S0 = S( M0 )
@@ -664,15 +660,14 @@ S0 = S( M0 )
 S1 = S( M1 )
 ```
 
-The tuples (S<sub>i</sub>,A<sub>ik</sub>,S<sub>k</sub>) are merely an observation of the behavior of the state machine, rather than a physical representation of its runtime.
-This change of perspective (not semantics) is minute, yet fundamental. SAM would not work (as well) if the traditional semantics of State Machine would be structuring the code. The SAM semantics are inclusive of this traditional structure, and therefore strictly compatible, but SAM by no means require that one uses a graph of State and Actions.
+튜플(S<sub>i</sub>,A<sub>ik</sub>,S<sub>k</sub>)은 런타임의 물리적 표현보다 스테이트 머신의 액션을 관찰한것 일 뿐입니다.
+이러한 관점의 변화(의미론적이 아닌)는 근본적인 부분입니다. 스테이트 머신의 전통적인 의미가 코드를 구조화하는 경우 SAM은 작동하지 않습니다. SAM의 의미론은 이러한 전통적인 구조를 포괄하므로 엄격하게 호환되나 SAM은 결코 스테이트 및 액션 그래프를 사용하지 않아도 됩니다.
+그래서 일부 사람들에게 SAM이 "자연스럽게" 느낄 것이라 생각합니다.
 
-I believe that is why some people have expressed that SAM "feels natural".
-
-The [Rocket Launcher](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) example shows how to implement the Sx() functions:
+[Rocket Launcher](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) 예제에서는 Sx() 함수를 구현하는 방법을 보여줍니다.
 
 ```javascript
-// Derive the current state of the system
+// 시스템의 현재 상태를 파생시킵니다.
 state.ready = function(model) {
   return ((model.counter === COUNTER_MAX) && !model.started && !model.launched && !model.aborted) ;
 }
@@ -693,7 +688,7 @@ state.aborted = function(model) {
 }
 ```
 
-I cannot emphasize enough that it is not necessary to adopt a State Machine structure to use SAM and more often than not if-then-else will be adequate. However, sometimes it may become easier to use a strict State Machine structure. These functions can be used to validate that an action is enabled or not. They can also more naturally break down the hierarchy in from which the view is rendered.
+SAM을 사용하기 위해 스테이트 머신 구조를 채택할 필요는 없으며 if-then-else가 적절하다고는 말할 수 없습니다. 그러나 떄로는 엄격한 스테이트 머신 구조를 사용하는 것이 더 쉬워질 수 있습니다. 이 기능을 사용하여 액션이 활성화 되어있는지 여부를 확인할 수 있습니다. 또한 뷰가 렌더링되는 계층 구조를 더 자연스럽게 세분화할 수 있습니다.
 
 ### APIs
 
