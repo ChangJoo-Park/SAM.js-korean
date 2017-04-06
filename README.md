@@ -256,17 +256,18 @@ model.present = function(data, render) {
 }
 ```
 
-### State
+### 스테이트
 
-This concept is unique to SAM. Its purpose is to futher decouple the Model from the View (i.e. the State Representation). The State has two roles:
+이 개념은 SAM의 고유한 특성입니다. 모델의 목적은 모델을 뷰(즉 스테이트 표현)에서 분리하는 것 입니다. 스테이트에는 두가지 역할이 있습니다.
 
 - Decide how to translate the model property values into a State Representation
-- Process the next-action predicate
+- 모델 속성 값을 스테이트 표현으로 변환하는 방법 결정
+- 다음 액션 속성 처리
 
-Unintuitively, the State does not hold any “state”, it is a pure function which computes the view and the next-action predicate, both from the model property values. The State may compute the current "control state" of the system to assist the computation, but **SAM does not require the State implementation to be based the semantics of a state machine.** In the Rocket Launcher example, we've have implemented the full semantics of a state machine where each control state is computed with pure functions such as:
+직관적이지 않게, 스테이트는 어떠한 "상태"도 가지지 않으며 모델 속성 값으로부터 뷰와 다음 액션 속성을 계산하는 순수한 함수입니다. 스테이트 계산을 돕기위해 시스템의 현재 "제어 상태"를 계산할 수는 있지만 **SAM은 스테이트 구현이 스테이트 시스템의 의미를 기반하는 것을 요구하지 않습니다.** Rocket Launcher 예제에서 각 제어 상태가 다음과 같은 순수 함수로 계산되는 스테이트 시스템의 전체 의미를 구현했습니다.
 
 ```javascript
-// Assuming the following model structure
+// 다음 모델 구조를 가정합니다
 var model = {
   counter: COUNTER_MAX,
   started: false,
@@ -275,7 +276,7 @@ var model = {
 } ;
 
 
-// Derive the current control states of the system
+// 시스템의 현재 제어 상태를 도출합니다
 state.ready = function(model) {
   return ((model.counter === COUNTER_MAX) && !model.started && !model.launched && !model.aborted) ;
 }
@@ -309,16 +310,16 @@ state.representation = function(model, display) {
       representation = state.view.aborted(model) ;
     }
 
-    // mount the corresponding representation in the GUI
+    // GUI에 해당 표현을 마운트합니다
     display(representation) ;
 
-    // since we are in a reactive loop, the present method returns nothing
+    // 반응 루프에 있기 때문에, 아무것도 리턴하지 않습니다
 }
 ```
 
-Depending on the number of control states of your application and the size of your model, these functions can become rather tedious to write. Again, there is no requirement to adopt such an approach, it may help in some cases and be a burden in another where a series of if-then-else on some key properties of the model is good enough.
+애플리케이션의 제어 상태 수와 모델 크기에 따라 이러한 함수는 다소 지루할 수 있습니다. 다시 말하면, 그러한 접근법을 채택 할 필요는 없으며 어떤 경우에는 도움이 될 수 있고 모델의 핵심 속성에 대한 일련의 if-then-else가 충분히 좋은 다른 곳에서 부담이 될 수 있습니다.
 
-Once the state representation is rendered, the State is responsible for invoking the next-action predicate (nap), which is a pure function of the model. The purpose of the nap() function is to determine if, given the current control state of the model, there are some automatic actions that need to be invoked. For instance in the [Rocket Launcher](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) example, the "decrement()" action is invoked by the next-action predicate while the system is in the counting state. When the counter reaches zero, it invokes the "launch()" action.
+스테이트 표현이 렌더링 되면 스테이트는 모델의 순수한 함수인 다음 액션 술어(nap)을 호출합니다. nap() 함수의 목적은 모델의 현재 제어 상태에 따라 호출해야하는 자동 작업이 있는지 확인하는 것 입니다. 예를 들어 [Rocket Launcher](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) 예제에서 시스템은 다음 액션 조건자에 의해 "decrement()" 액션이 호출됩니다. 카운팅 스테이트의 카운터가 0이 되면 "launch()" 액션을 호출합니다.
 
 ```javascript
 state.nextAction = function (model) {
@@ -334,9 +335,7 @@ state.nextAction = function (model) {
 }
 ```
 
-When you feel that a full state machine is required for your app, you may use a library such as the [STAR library](https://bitbucket.org/jdubray/star-javascript).
-
-
+앱에 전체 스테이트 기계가 필요하다고 생각하면 [STAR library](https://bitbucket.org/jdubray/star-javascript)와 같은 라이브러리를 사용할 수 있습니다.
 
 ### State Representation
 
