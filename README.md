@@ -389,13 +389,13 @@ actions.intents = {
 
 컨셉은 액션에 의해 직접 소비가능한 이벤트 타입을 매핑하도록 확장할 수 있지만 이 결합은 뷰와 액션의 결합보다 덜 중요합니다.
 
-### View Model
+### 뷰모델
 
-When the View is expressed as a pure function of the Model (as opposed to a template or a query), the Model does not have to conform artificially to the interface of the view. With SAM, the View is generally decomposed into components, each of them expressed as pure functions exposing a component specific/centric interface.
+뷰가 모델의 순수 함수(템플릿 또는 쿼리와 반대)로 표현되면 모델은 뷰의 인터페이스에 인위적으로 순응하지 않아도 됩니다. SAM을 사용하면 View는 일반적으로 컴포넌트로 분해됩니다. 각 컴포넌트는 컴포넌트 구체적이고/중심적인 인터페이스를 표시하는 순수함수로 표현합니다.
 
-For instance, when a view displays a value v and a graphical indicator as to whether this value is great, good or bad, there is no reason to have the indicator’s value in your model: the component's function should simply compute the value of the indicator from the value v provided by the model.
+예를 들어 뷰에 값 v와 이 값이 좋거나 나쁜 상태를 표시하는 그래픽 표시기를 표시하는데 모델에 표시기 값을 표시할 이유가 없습니다. 컴포넌트의 함수는 모델이 제공한 값 v로부터 표시기 값을 계산 해야합니다.
 
-Now, it’s not a great idea to directly embed these computations in the the view, but it is not difficult to use a view-model function, such as:
+이러한 계산을 뷰에 직접 포함시키는 것은 좋은 생각이 아니지만 다음과 같은 뷰 모델 함수를 사용하는 것은 어려운 일이 아닙니다.
 
 ```javascript
 V = f( vm(M) )
