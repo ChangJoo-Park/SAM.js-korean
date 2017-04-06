@@ -598,45 +598,45 @@ SAFE 컨테이너는 [client측과 server측 "시간여행" 개발도구](https:
 
 [SAFE 프로젝트](https://github.com/jdubray/sam-safe)(State-Action-Fabric-Element)는 브라우저 또는 node.js에서 실행할 수 있는 SAM 구현을 위한 마이크로 컨테이너입니다. 최소한 SAFE를 사용하면 패턴 엘리먼트를 연결할 수 있습니다. 또한 세션관리, 로깅 및 오류처리를 함께 제공됩니다. 현재 버전에서는 전역 유효성 검사 및 "강제 중지" 작업을 포함한 액션 수행이 가능합니다. 마지막으로 시간여행 도구를 구현하였습니다.
 
-### Composition
+### 구성
 
-The SAM pattern offers some generous composition mechanisms.
+SAM 패턴은 관대한 구성 메커니즘을 제공합니다.
 
-First Actions, as pure functions, compose naturally to present a single dataset to the model:
+첫번째 액션은 순수 함수로 모델에 단일 데이터 셋을 자연스럽게 표시합니다.
 
 ```javascript
 C(data) = A(B(data))
 ```
 
-This type of composition is a functional composition and the resulting action is considered to be a single action applied to the system from SAM's point of view.
+이러한 유형의 구성은 함수형 구성이며 결과 액션은 SAM의 관점에서 시스템에 적용되는 단일 액션으로 간주됩니다.
 
-Similarly, the State Representation (View) can be decomposed in a hierarchy of components:
+유사하게, 스테이트 표현(뷰)는 컴포넌트 계층 구조로 분해할 수 있습니다.
 
 ```javascript
 V = f( M )
 f( M ) = f1( g1(M) + g2(M) ) + f2( h1(M) + h2(M) )
 ```
 
-The most interesting composition mechanisms are at the pattern level itself. For instance, SAM supports an instance level composition where one instances runs in the browser and one instance runs in the server.
+가장 흥미로운 구성 메커니즘은 패턴 레벨 그 자체에 있습니다. 예를 들어 SAM은 하나의 인스턴스가 브라우저에서 실행되고 하나의 인스턴스가 서버에서 실행되는 인스턴스 레벨 구성을 지원합니다.
 
 ![](http://sam.js.org/assets/figures/fig9.jpg)
 
 ```javascript
-// The composition has a single view
+// 구성은 하나의 뷰를 가집니다
 V = Ss( Ms ) + Sc( Mc )
 
-// Instance c (browser) invokes an action on instance s (server)
-// this action is generally invoked in the nap() function of the client
+// 인스턴스 c(브라우저)는 인스턴스 s(서버)에서 액션을 호출합니다.
+// 이 액션은 일반적으로 클라이언트의 nap() 함수에서 호출합니다.
 V = Ss( Ms.present( As(Mc) )
 ```
 
-Though it is theoretically possible, it is highly recommended to refrain from invoking client actions from the server. The role of the server is rather to deliver the SAM client instance as part of its state representation.
+이론적으로 가능하지만 서버에서 클라이언트 작업을 호출하는 것은 좋지 않습니다. 서버의 역할은 스테이트 표현의 일부로 SAM 클라이언트 인스턴스를 전달하는 것 입니다.
 
-Here is a [Parent/Child](https://github.com/jdubray/sam-samples/tree/master/react-child-instance) sample using React 15.0.2 with JSX/Babel. It shows how you can implement a complex form of wizard with a child instance and submit the resulting dataset to the parent, once the content of the form is valid.
+리액트 15.0.2와 JSX/바벨을 이용한 [부모/자식](https://github.com/jdubray/sam-samples/tree/master/react-child-instance) 예제 입니다. 자식 인스턴스와의 복잡한 형태를 구현하고 폼의 내용이 유효하면 부모에게 결과 데이터셋을 제출하는 방법을 보여줍니다.
 
-NOTE: THIS IS JUST SOME INITIAL THOUGHTS, NEED MORE WORK:
+참고: 단지 초기단계의 생각이며 더 많은 것들을 필요로 합니다.
 
-SAM also offers an interesting alternative composition mechanism which enable to synchronize a client side and server side model, by which you present the same dataset to both the client side and server side model.
+또한 SAM은 클라이언트/서버측 모델을 동기화할 수 있는 흥미로운 대체 구성 메커니즘을 제공하여 클라이언트 측 모델과 서버측 모델 모두에 동일한 데이터셋을 제공합니다.
 
 ![](http://sam.js.org/assets/figures/fig11.jpg)
 
