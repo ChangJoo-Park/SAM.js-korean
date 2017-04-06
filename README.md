@@ -592,11 +592,11 @@ SAFE 컨테이너는 [client측과 server측 "시간여행" 개발도구](https:
 <div style="position:relative;height:0;padding-bottom:75.0%"><iframe src="https://www.youtube.com/embed/o7ZIG4jT0xM?ecver=2" width="480" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 
 
-## Advanced Topics
+## 고급 토픽
 
-### Micro Container
+### 마이크로 컨테이너
 
-The [SAFE project](https://github.com/jdubray/sam-safe)(State-Action-Fabric-Element) is a micro-container for SAM implementations which can run in the browser or on node.js. At a minimum SAFE enables you to wire the elements of the pattern. It also comes with Session Management, Logging and Error Handling. The current version enables global validation and enforcement of actions, including action "hang back". Last but not least, it implements the Time Travel dev tool.
+[SAFE 프로젝트](https://github.com/jdubray/sam-safe)(State-Action-Fabric-Element)는 브라우저 또는 node.js에서 실행할 수 있는 SAM 구현을 위한 마이크로 컨테이너입니다. 최소한 SAFE를 사용하면 패턴 엘리먼트를 연결할 수 있습니다. 또한 세션관리, 로깅 및 오류처리를 함께 제공됩니다. 현재 버전에서는 전역 유효성 검사 및 "강제 중지" 작업을 포함한 액션 수행이 가능합니다. 마지막으로 시간여행 도구를 구현하였습니다.
 
 ### Composition
 
