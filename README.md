@@ -821,11 +821,11 @@ function init() {
 }
 ```
 
-### Concurrency
+### 동시성
 
-We suggest that you download an HTML5 template of your choice and start building an application with it. To make this tutorial more realistic, we are going to build a simple Web Site with Blog and a Contact form.
+원하는 HTML5 템플릿을 다운로드하여 작성하는 것이 좋습니다. 이 튜토리얼을 조금 더 사실적으로 만들기 위해 Blog와 Contact 양식으로 간단한 웹사이트를 만들 계획 입니다.
 
-The [SB Admin template](http://startbootstrap.com/template-overviews/sb-admin/) seems like a great starting point. The list of components are easy to identify, from the index.html file:
+[SB 관리자 템플릿](http://startbootstrap.com/template-overviews/sb-admin/)은 훌륭한 출발점으로 보입니다. 컴포넌트 목록은 index.html파일에서 쉽게 식별할 수 있습니다.
 
 - ----- Structure ------
 - Navigation Bar
@@ -841,14 +841,14 @@ The [SB Admin template](http://startbootstrap.com/template-overviews/sb-admin/) 
 
 ![](https://startbootstrap.com/img/templates/sb-admin.jpg)
 
-Many developers dislike the code that will follow (let's call it vanilla.js). Since this is a matter of preferences, there is not much point in arguing about it. I just happen to prefer a raw JavaScript/HTML5/CSS3 style because:
+많은 개발자들이 Vanilla.js라는 것을 싫어합니다. 하지만 이것은 선호의 문제이기 때문에 논쟁할 거리는 아닙니다. 저는 단지 JavaScript/HTML5/CSS3 스타일을 선호합니다.
 
-- it enables the greatest number of developers to become full stack developers (with Node.js)
-- it enables the greatest decoupling between the View and the Model
-- Vanilla.js makes it really easy to develop Isomorphic JavaScript
-- And perhaps, most practically, it allows anyone to take the work of a Web designer and turn it into a -beautiful Web app in a matter of minutes
+- 많은 수의 개발자가 풀스택 개발자가 될 수 있습니다.(Node.js와 함께)
+- 뷰와 모델 간 분리가 가능하게 됩니다.
+- Vanilla.js 는 동형 자바스크립트 개발이 매우 쉽습니다
+- 아마 웹디자이너의 작업을 빠른 시간안에 멋진 웹 애플리케이션으로 만들 수 있습니다.
 
-The experienced developers will easily translate this code to meet their neesds. So let's go ahead and start creating the component interfaces without any further apologies:
+숙련된 개발자는 이러한 요구사항을 충족시키기 위해 이 코드를 쉽게 번역할 것입니다. 이제 컴포넌트 인터페이스 생성을 시작하겠습니다.
 
 ```javascript
 var theme = {} ;
@@ -877,7 +877,7 @@ theme.ediTable = function(id,headers,data,editable, style, maxSize) { } ;
 ...
 ```
 
-The implementation of each function is just a parameterization of the HTML template (the whole theme implementation can be found here):
+각 함수의 구현은 HTML 템플릿의 매개 변수화일뿐 입니다. (전체 테마 구현은 여기에 있습니다)
 
 ```javascript
 theme.statSummary = function(fa,label,number,link,linkLabel,color) {
