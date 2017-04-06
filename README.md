@@ -692,12 +692,12 @@ SAM을 사용하기 위해 스테이트 머신 구조를 채택할 필요는 없
 
 ### APIs
 
-SAM was originally designed to solve the strong coupling that MVC creates between the Front-End structure and the Back-End APIs. APIs can be composed at a couple levels in SAM:
+SAM은 원래 MVC가 프론트엔드 구조와 백엔드 API간에 생성되는 강력한 결합을 해결하기 위해 설계되었습니다. API는 SAM에서 몇 단계로 구성할 수 있습니다.
 
-- Actions: for APIs with no side-effect whatsoever on the model
-- Model: for CRUD APIs that persist/populate the model property values (commonly called the Data Access Layer)
+- 액션: 모델에 부작용이 없는 API의 경우
+- 모델: 모델 속성 값 (일반적으로 데이터 액세스 레이어라 함)을 유지/생성하는 CRUD API의 경우
 
-Concurrency issues aside, an action can present its values when after processing an API call, for instance:
+동시성 문제는 다음에 이야기하고, 액션은 API 호출을 처리한 후 다음과 같이 값을 나타낼 수 있습니다.
 
 ```javascript
 function getRssFeed(data) {
@@ -710,11 +710,11 @@ function getRssFeed(data) {
 
   request(options, function (error, response, body) {
      if (!error && response.statusCode == 200) {
-      // parse the RSS feed into a json object
+      // RSS 피드를 JSON 객체로 바꿈
       parseString(body, function (err, result) {
-        // prepare proposed dataset
+        // 제안할 데이터 셋 준비
         data.blog = result.rss.channel[0].item ;
-        // present data to the model
+        // 모델에 데이터 표시
         present(data) ;
      });
      }
@@ -722,9 +722,7 @@ function getRssFeed(data) {
 }
 ```
 
-Similarly, the model can perform all the persistence operations (which could result in rejecting some proposed values) before passing control of the Reactive Loop to the State object. That is very different from React because you cannot touch the State without triggering a rendering of the view, which makes very little sense, when you think of it. It only makes sense when you spread the model state into the various components, and even then it warps the articulation of APIs with the Front-End reactive Flow.
-
-
+유사하게, 모델은 반응 루프의 제어를 스테이트 객체에 전달하기 전에 모든 지속성 연산을 수행 할 수 있습니다 (일부 제안된 값을 거부할 수 있음). 거의 이해가 안되는 뷰의 렌더링을 트리거하지 않으면서 스테이트를 건드릴 수 없기 때문에 React와 매우 다릅니다. 모델 스테이트를 다양한 컴포넌트에 전파 할 때만 의미가 있으며, 심지어 프론트엔드 반응 흐름을 사용하여 API의 접합을 왜곡합니다.
 
 ### Headless SAM
 
