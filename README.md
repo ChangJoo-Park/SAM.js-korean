@@ -337,12 +337,12 @@ state.nextAction = function (model) {
 
 앱에 전체 스테이트 기계가 필요하다고 생각하면 [STAR library](https://bitbucket.org/jdubray/star-javascript)와 같은 라이브러리를 사용할 수 있습니다.
 
-### State Representation
+### 스테이트 표현
 
-The State Representation function(s) are technology agnostic. SAM only requires that these functions be pure functions of the model (i.e. stateless from the model's perspective). Here is an example [using Inferno](https://github.com/trueadm/inferno):
+스테이트 표현 함수는 기술에 의존하지 않습니다. SAM은 이러한 함수가 모델의 순수 함수(즉, 모델의 관점에서 볼 때 스테이트리스)만 요구합니다. 다음은 [Inferno 사용](https://github.com/trueadm/inferno)의 예 입니다.
 
 ```javascript
-// State representation of the counting state
+// 카운팅 스테이트의 스테이트 표현
   ...
   theme.counter = function(counter) {
     return {
@@ -359,13 +359,13 @@ The State Representation function(s) are technology agnostic. SAM only requires 
 }
 ```
 
-Stateless React.js components would work great. The same type of function could we writen in Objective-C for the viewDidLoad method.
+스테이트리스 React.js 컴포넌트는 잘 작동합니다. Objective-C의 viewDidLoad 메소드와 같은 유형의 함수입니다.
 
-Alex Schepanovski explains how to achieve [React.js functionality with just a few lines of JQuery](http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/).
+Alex Schepanovski는 [몇줄의 jQuery로 React.js의 함수형 구현](http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/)을 설명합니다.
 
-On of the key problems that frameworks try to tackle is the wiring between the HTML events and event handlers. As you can see in the code above, the "abort" action has been hard coded in the counting state representation. This is not a great coupling and in general it should be avoided. SAM provides an elegant solution to decouple the view components from your application via the State function.
+프레임워크가 해결해야할 주요 문제는 HTML 이벤트와 이벤트 핸들러 사이의 연결 입니다. 위 코드에서 볼 수 있듯이 "abort" 액션은 카운팅 상태 표현에 하드코딩 되어 있습니다. 이것은 좋은 결합이 아니므로 일반적으로 피해야 합니다. SAM은 상태 기능을 통해 애플리케이션의 뷰 컴포넌트를 분리하는 우아한 솔루션을 제공합니다.
 
-You can design your view components to accept a list of "intents" which map the application's action to the component's handlers. We have implemented that approch in [the TODOSAM sample](https://github.com/jdubray/sam-samples/blob/master/todomvc-app/js/app.js). All the theme's components accept an intent map:
+컴포넌트의 핸들러에 애플리케이션의 액션을 매핑하는 "intents" 목록을 받아들이도록 뷰 컴포넌트를 설계할 수 있습니다. [TODOSAM 예제](https://github.com/jdubray/sam-samples/blob/master/todomvc-app/js/app.js)에서 그 접근방식을 구현했습니다. 모든 테마 컴포넌트는 인텐트 맵을 허용합니다.
 
 ```javascript
 theme.list = (todos, displayActive, displayCompleted, intents) => {
@@ -374,7 +374,7 @@ theme.list = (todos, displayActive, displayCompleted, intents) => {
   ...
 }
 
-// mapping view intents -> actions
+// 뷰 인텐트와 액션 매핑
 actions.intents = {
   edit: 'edit',
   save: 'save',
@@ -387,7 +387,7 @@ actions.intents = {
 }
 ```
 
-The concept could also be extended to map the event format to be directly consumable by the action, but this coupling is less important than the coupling of the actions with the view.
+컨셉은 액션에 의해 직접 소비가능한 이벤트 타입을 매핑하도록 확장할 수 있지만 이 결합은 뷰와 액션의 결합보다 덜 중요합니다.
 
 ### View Model
 
