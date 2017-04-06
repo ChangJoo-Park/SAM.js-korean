@@ -724,13 +724,13 @@ function getRssFeed(data) {
 
 유사하게, 모델은 반응 루프의 제어를 스테이트 객체에 전달하기 전에 모든 지속성 연산을 수행 할 수 있습니다 (일부 제안된 값을 거부할 수 있음). 거의 이해가 안되는 뷰의 렌더링을 트리거하지 않으면서 스테이트를 건드릴 수 없기 때문에 React와 매우 다릅니다. 모델 스테이트를 다양한 컴포넌트에 전파 할 때만 의미가 있으며, 심지어 프론트엔드 반응 흐름을 사용하여 API의 접합을 왜곡합니다.
 
-### Headless SAM
+### 헤드리스 SAM
 
-SAM can also be used without a View, whereby it listens on incoming Action requests and returns a response which can be the model of a fraction of the model. As such SAM offers a new API implementation pattern which is particularly well suited for implementating Stateful APIs.
+SAM은 뷰 없이도 사용할 수 있습니다. 그러면 SAM은 들어오는 액션 요청을 수신하고 모델의 일부 모델일 수 있는 응답을 반환합니다. SAM은 스테이트풀 API를 구현하는데 특히 적합한 새로운 API 구현 패턴을 제공합니다.
 
 ![](http://sam.js.org/assets/figures/fig12.jpg)
 
-A node.js implementation of Headless SAM would look like this:
+헤드리스 SAM의 node.js 구현은 다음과 같습니다.
 
 ```javascript
 var express = require('express');
@@ -744,7 +744,7 @@ var present = (
   function (initialState) {
     var model = initialState ;
     return (function( data, res) {
-      // mutate the model
+      // 모델 변이
       ...
       state(model) ;
     }) ;
@@ -756,54 +756,54 @@ var present = (
 
 actions.addAPI('submit') ;
 app.post(actions.apis.submit.path, function(req,res) {
-  // extract intent from request body
+  // 요청의 body에서 인텐트 추출
   var intent = new Intent('submit',req.body) ;
-  // Compute model property values
+  // 모델 속성 값 계산
   data_ = actions.impl.submit(intent) ;
-  // present data to the model
+  // 모델에 데이터 표시
   presentToModel(data_, res) ;
 }) ;
 
 //// State ////////////////////////////
 
 function state(model) {
-  // prepare and return API response
+  // API 응답 준비 및 반환
   var response = model.response() ;
   res.send(response) ;
 
-  // execute next action predicate
+  // 다음 액션 술어 실행
   nap(model) ;
 }
 ```
 
-The pattern can easily be adapted to mount a user session in the model or rehydrate/dehydrate the context of the request before/after the model mutates.
+이 패턴은 모델에서 사용자 세션을 마운트하거나 모델 변경 전/후에 요청의 컨텍스트를 재수화/탈수화 하는데 쉽게 적용할 수 있습니다.
 
-### Isomorphic JavaScript
+### 동형 JavaScript
 
 Typical SAM's implementations make it easy to move JavaScript code between the client or the server (a.k.a [Isomorphic JavaScript](http://isomorphic.net/)).
-
+일반적인 SAM의 구현을 통해 클라이언트 또는 서버 사이에서 JavaScript 코드를 쉽게 이동할 수 있습니다. ([동형 JavaScript](http://isomorphic.net/)).
 
 | # | Client           | Server  | Implementation  |
 | - |:-------------| :-----|:-----|
-| 1 | View | Actions, Model, State   | JQuery handlers call Actions Server returns HTML |
-| 2 | View, Actions      | Model, State | JQuery handlers implement actions which call present()  Server returns HTML |
-| 3 | View, Model, State      | Actions | JQuery handlers invoke Actions, response is presented to the Model on the client Server returns JSON |
-| 4 | View, State      | Actions,Model | JQuery handlers invoke Actions, response is presented to the State on the client Server returns JSON |
-| 5 | View, Actions, State      | Model | JQuery handlers implement Actions which call present(), response is presented to the State on the client Server returns JSON |
+| 1 | View | Actions, Model, State   | jQuery 핸들러가 액션 호출, 서버는 HTML 반환 |
+| 2 | View, Actions      | Model, State | jQuery 핸들러는 present()를 호출하는 액션 구현, 서버는 HTML 반환|
+| 3 | View, Model, State      | Actions | jQuery 핸들러가 액션을 호출하면 응답이 클라이언트의 모델에 표시, 서버는 JSON 반환 |
+| 4 | View, State      | Actions,Model | jQuery 핸들러가 액션을 호출하면 클라이언트의 스테이트에 응답을 표시, 서버는 JSON 반환 |
+| 5 | View, Actions, State      | Model | jQuery 핸들러는 present()를 호출하는 액션 구현. 응답은 클라이언트의 스테이트에 제공됨, 서버는 JSON 반환 |
 
-For instance, in the [Blog sample](https://github.com/jdubray/sam-samples/tree/master/crud-blog) we have implemented the Actions on the client and the Model and the State on the server. In that case, we have to implement two "APIs" on the server:
+예를 들어 Blog 샘플에서 클라이언트에서 액션을 서버에서 모델과 스테이트를 구현했습니다. 이 경우 서버에 두개의 "API"를 구현해야 합니다.
 
 - init()
 - present(data)
 
-Option #1 should be preferred when authorization (RBAC) is a concern. Option #5 is the one that pushes as much processing on the client as possible.
+옵션 #1은 인증(RBAC)이 문제가 될 때 선호됩니다 옵션 #5는 클라이언트에서 가능한 한 많은 처리를 푸시하는 옵션입니다.
 
 ```javascript
 function present(data) {
-  // client side
+  // 클라이언트 측
   //model.present(data) ;
 
-  // server side
+  // 서버 측
   $.post( "http://localhost:5425/app/v1/present", data)
   .done(function( representation ) {
     $( "#representation" ).html( representation );
@@ -811,10 +811,10 @@ function present(data) {
 }
 
 function init() {
-  // client side
+  // 클라이언트 측
   //view.display(view.init(model)) ;
 
-  // server side
+  // 서버 측
   $.get( "http://locahost:5425/app/v1/init", function( data ) {
     $( "#representation" ).html( data );
   });
