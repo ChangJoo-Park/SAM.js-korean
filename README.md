@@ -1,6 +1,7 @@
 # SAM
 
-현재 작업중인 문서입니다.
+**안내**
+이 문서의 원본은 [이곳](http://sam.js.org/) 입니다.
 
 ## SAM 패턴
 
@@ -16,7 +17,7 @@ SAM(State-Action-Model)은 비지니스 로직을 뷰에서 엄격하게 분리�
 var model = { counter: 0 }
 ```
 
-대부분의 소프트웨어 엔지니어는 애플리케이션 상태 변이를 값을 할당하는 방식으로 구현합니다.
+대부분의 소프트웨어 엔지니어는 값을 할당하는 방식으로 애플리케이션 상태 변이를 구현합니다.
 
 ```javascript
 model.counter = model.counter + 1;
@@ -41,7 +42,7 @@ model.accept({counter: proposed_value})
     }) ;
 ```
 
-SAM은 간결함으로 인하여 "unapologetically" 드리븐이며 Google의 Angular 또는 Facebook의 React+JSX+Flux/Redux+Saga+Thunk+GraphQL+Relay와 같은 프레임워크의 복잡성에 도전합니다. SAM의 주요 목표 중 하나는 모든 사람들이 아름답고 매력적인 HTML5/CSS3/JavaScript 웹 응용 프로그램을 만들면서 [React.js를 매우 독창적으로 만드는 것](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a#.aoccyh29h)을 유지하는 것입니다.
+SAM은 간결함으로 인하여 "unapologetically driven<small><i>(한글로 정확한 번역이 어렵습니다)</i></small>" 이며  Google의 Angular 또는 Facebook의 React+JSX+Flux/Redux+Saga+Thunk+GraphQL+Relay와 같은 프레임워크의 복잡성에 도전합니다. SAM의 주요 목표 중 하나는 모든 사람들이 아름답고 매력적인 HTML5/CSS3/JavaScript 웹 응용 프로그램을 만들면서 [React.js를 매우 독창적으로 만드는 것](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a#.aoccyh29h)을 유지하는 것입니다.
 
 - 구성
 - 단방향 데이터흐름
@@ -228,8 +229,8 @@ function changeOfAddress(address,present) {
   address = address || {} ;
   address.country = address.country || 'Australia' ;
   getPostalAddress( address, function(addr) {
-      // assuming the dataset returned by the 3rd party
-      // service can be directly presented to the model
+      // 써드파티에게 받은 데이터 셋을 가정합니다
+      // 모델에 서비스 표시를 직접 할 수 있습니다
       present(addr) ;
   }) ;
 }
@@ -320,7 +321,7 @@ state.representation = function(model, display) {
 
 애플리케이션의 제어 상태 수와 모델 크기에 따라 이러한 함수는 다소 지루할 수 있습니다. 다시 말하면, 그러한 접근법을 채택 할 필요는 없으며 어떤 경우에는 도움이 될 수 있고 모델의 핵심 속성에 대한 일련의 if-then-else가 충분히 좋은 다른 곳에서 부담이 될 수 있습니다.
 
-스테이트 표현이 렌더링 되면 스테이트는 모델의 순수한 함수인 다음 액션 술어(nap)을 호출합니다. nap() 함수의 목적은 모델의 현재 제어 상태에 따라 호출해야하는 자동 작업이 있는지 확인하는 것 입니다. 예를 들어 [Rocket Launcher](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) 예제에서 시스템은 다음 액션 조건자에 의해 "decrement()" 액션이 호출됩니다. 카운팅 스테이트의 카운터가 0이 되면 "launch()" 액션을 호출합니다.
+스테이트 표현이 렌더링 되면 스테이트는 모델의 순수한 함수인 다음 액션 술어(nap)을 호출합니다. nap() 함수의 목적은 모델의 현재 제어 상태에 따라 호출해야하는 액션이 있는지 확인하는 것 입니다. 예를 들어 [Rocket Launcher](https://bitbucket.org/snippets/jdubray/9dgKp/sam-sample) 예제에서 시스템은 다음 액션 조건자에 의해 "decrement()" 액션이 호출됩니다. 카운팅 스테이트의 카운터가 0이 되면 "launch()" 액션을 호출합니다.
 
 ```javascript
 state.nextAction = function (model) {
@@ -410,7 +411,7 @@ SAM 패턴은 수학 표현식으로 설명할 수 있습니다.
 V = S( vm(M.present(A(data))), nap(Model) )
 ```
 
-그러나 이 표현식은 패턴 엘리먼트가 호출되는 순서를 설명하는 논리적 ㅍ현식일 뿐입니다. 표현 자체는 반응 흐름 또는 다른 배선 옵션을 나타내지 않습니다.
+그러나 이 표현식은 패턴 엘리먼트가 호출되는 순서를 설명하는 논리적 표현식일 뿐입니다. 표현 자체는 반응 흐름 또는 다른 배선 옵션을 나타내지 않습니다.
 
 SAM은 브라우저 ([React와 Redux와 유사](http://andrewhfarmer.com/react-ajax-best-practices))에서 구현할 수 있지만 SAM의 장점 중 하나는 사실상 모든 토폴로지에서 패턴의 엘리먼트를 배포하고 구성할 수 있다는 것 입니다. 따라서 패턴을 연결하는 방법은 하나가 아닙니다.
 
@@ -484,7 +485,7 @@ function someView(model) {
   var output = '' ;
   // ...
 
-  // wire the possible actions in the view
+  // 뷰 안에 있는 가능한 액션을 연결
   output = output + 'onSubmit="JavaScript:return action1({data:data});'
 
   // ...
@@ -825,7 +826,7 @@ function init() {
 
 원하는 HTML5 템플릿을 다운로드하여 작성하는 것이 좋습니다. 이 튜토리얼을 조금 더 사실적으로 만들기 위해 Blog와 Contact 양식으로 간단한 웹사이트를 만들 계획 입니다.
 
-[SB 관리자 템플릿](http://startbootstrap.com/template-overviews/sb-admin/)은 훌륭한 출발점으로 보입니다. 컴포넌트 목록은 index.html파일에서 쉽게 식별할 수 있습니다.
+[SB 관리자 템플릿](http://startbootstrap.com/template-overviews/sb-admin/)은 훌륭한 출발점입니다. 컴포넌트 목록은 index.html파일에서 확인할 수 있습니다.
 
 - ----- Structure ------
 - Navigation Bar
