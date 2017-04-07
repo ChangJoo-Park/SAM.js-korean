@@ -934,7 +934,7 @@ theme.statSummary = function(fa,label,number,link,linkLabel,color) {
 ### ToDo
 
 - [Vanilla JavaScript와 HTML](https://bitbucket.org/snippets/jdubray/zr9r6/item-list)
-- [Vue.js](http://codepen.io/msolovyov/pen/qbvYpv?editors=1010)([](http://sam.js.org/index.html))
+- [Vue.js](http://codepen.io/msolovyov/pen/qbvYpv?editors=1010)
 - [TODOMVC Challange (HTML+Vanilla JS, both ES5 and ES6)](https://github.com/jdubray/sam-samples/tree/master/todomvc-app)
 - [Angular2 Admin Template with ToDo component ](https://github.com/jdubray/sam-samples/tree/master/angular2-admin-master-2.0.0)
 
@@ -959,7 +959,7 @@ theme.statSummary = function(fa,label,number,link,linkLabel,color) {
 - (React/Redux+Firebase) via [David Fall](https://github.com/509dave16)
 - A simple Counter App using [Flyd](https://github.com/imnutz/sam-flyd) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
 - [How to use Mocha and Chai](http://codepen.io/devghost/pen/eZWxmo) to write unit tests (BDD) for SAM implementations (via Robert Blixt)
-A contact manager web application built with [SAM and CSP](https://github.com/imnutz/sam-csp) ([Communicating Sequential Processes](http://jlongster.com/Taming-the-Asynchronous-Beast-with-CSP-in-JavaScript)) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
+- A contact manager web application built with [SAM and CSP](https://github.com/imnutz/sam-csp) ([Communicating Sequential Processes](http://jlongster.com/Taming-the-Asynchronous-Beast-with-CSP-in-JavaScript)) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
 - [A simple CRUD application](https://github.com/jdubray/sam-samples/tree/master/crud-blog-lambda) running on AWS Lambda and DynamoDB for session management
 - [A simple counter](https://github.com/jdubray/sam-samples/tree/master/react-counter) using React 15.0.2 with JSX/Babel
 - [A Parent/Child](https://github.com/jdubray/sam-samples/tree/master/react-child-instance) sample using React 15.0.2 with JSX/Babel
