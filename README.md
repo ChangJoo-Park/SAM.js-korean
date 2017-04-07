@@ -1,11 +1,13 @@
 # SAM
 
+현재 작업중인 문서입니다.
+
 ## SAM 패턴
 
 SAM(State-Action-Model)은 비지니스 로직을 뷰에서 엄격하게 분리하여 프론트엔드 아키텍처를 단순화하는 새로운 반응형/함수형 패턴입니다. SAM은 다음 두가지 기본 원칙을 따릅니다.
 
-1. 뷰와 모델 사이의 관계는 반드시 함수형이어야한다
-2. 상태 변이는 반드시 프로그래밍 모델의 일급 클래스이어야 한다
+1. 뷰와 모델 사이의 관계는 반드시 함수관계이다
+2. 상태 변이는 반드시 프로그래밍 모델의 일급 클래스이다
 
 
 마우스 클릭과 같은 특정 사용자 이벤트를 계산하는 간단한 애플리케이션과 애플리케이션에 포함된 모델을 살펴봅니다.
@@ -39,7 +41,7 @@ model.accept({counter: proposed_value})
     }) ;
 ```
 
-SAM은 간결함으로 인하여 "unapologetically" driven 이고 Google의 Angular 또는 Facebook의 React+JSX+Flux/Redux+Saga+Thunk+GraphQL+Relay와 같은 프레임워크의 복잡성에 도전합니다. SAM의 주요 목표 중 하나는 모든 사람들이 아름답고 매력적인 HTML5/CSS3/JavaScript 웹 응용 프로그램을 만들면서 [React.js를 매우 독창적으로 만드는 것](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a#.aoccyh29h)을 유지하는 것입니다.
+SAM은 간결함으로 인하여 "unapologetically" 드리븐이며 Google의 Angular 또는 Facebook의 React+JSX+Flux/Redux+Saga+Thunk+GraphQL+Relay와 같은 프레임워크의 복잡성에 도전합니다. SAM의 주요 목표 중 하나는 모든 사람들이 아름답고 매력적인 HTML5/CSS3/JavaScript 웹 응용 프로그램을 만들면서 [React.js를 매우 독창적으로 만드는 것](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a#.aoccyh29h)을 유지하는 것입니다.
 
 - 구성
 - 단방향 데이터흐름
@@ -362,7 +364,7 @@ state.nextAction = function (model) {
 
 Alex Schepanovski는 [몇줄의 jQuery로 React.js의 함수형 구현](http://hackflow.com/blog/2015/03/08/boiling-react-down-to-few-lines-in-jquery/)을 설명합니다.
 
-프레임워크가 해결해야할 주요 문제는 HTML 이벤트와 이벤트 핸들러 사이의 연결 입니다. 위 코드에서 볼 수 있듯이 "abort" 액션은 카운팅 상태 표현에 하드코딩 되어 있습니다. 이것은 좋은 결합이 아니므로 일반적으로 피해야 합니다. SAM은 상태 기능을 통해 애플리케이션의 뷰 컴포넌트를 분리하는 우아한 솔루션을 제공합니다.
+프레임워크가 해결해야할 주요 문제는 HTML 이벤트와 이벤트 핸들러 사이의 연결 입니다. 위 코드에서 볼 수 있듯이 "abort" 액션은 카운팅 상태 표현에 하드코딩 되어 있습니다. 이것은 좋은 결합이 아니므로 일반적으로 피해야 합니다. SAM은 스테이트를 통해 애플리케이션의 뷰 컴포넌트를 분리하는 우아한 솔루션을 제공합니다.
 
 컴포넌트의 핸들러에 애플리케이션의 액션을 매핑하는 "intents" 목록을 받아들이도록 뷰 컴포넌트를 설계할 수 있습니다. [TODOSAM 예제](https://github.com/jdubray/sam-samples/blob/master/todomvc-app/js/app.js)에서 그 접근방식을 구현했습니다. 모든 테마 컴포넌트는 인텐트 맵을 허용합니다.
 
@@ -779,7 +781,6 @@ function state(model) {
 
 ### 동형 JavaScript
 
-Typical SAM's implementations make it easy to move JavaScript code between the client or the server (a.k.a [Isomorphic JavaScript](http://isomorphic.net/)).
 일반적인 SAM의 구현을 통해 클라이언트 또는 서버 사이에서 JavaScript 코드를 쉽게 이동할 수 있습니다. ([동형 JavaScript](http://isomorphic.net/)).
 
 | # | Client           | Server  | Implementation  |
