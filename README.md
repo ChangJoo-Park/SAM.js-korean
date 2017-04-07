@@ -260,7 +260,6 @@ model.present = function(data, render) {
 
 이 개념은 SAM의 고유한 특성입니다. 모델의 목적은 모델을 뷰(즉 스테이트 표현)에서 분리하는 것 입니다. 스테이트에는 두가지 역할이 있습니다.
 
-- Decide how to translate the model property values into a State Representation
 - 모델 속성 값을 스테이트 표현으로 변환하는 방법 결정
 - 다음 액션 속성 처리
 
@@ -958,7 +957,7 @@ theme.statSummary = function(fa,label,number,link,linkLabel,color) {
 - [SAM기반 엔진](https://github.com/509dave16/tic-tac-toe-engine)을 이용한 이중 클라이언트 (세션 기반) [Tic-Tac-Toe game](https://github.com/509dave16/sam-tic-tac-toe) [SAM기반 엔진](https://github.com/509dave16/tic-tac-toe-engine)
 - (React/Redux+Firebase) via [David Fall](https://github.com/509dave16)
 - A simple Counter App using [Flyd](https://github.com/imnutz/sam-flyd) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
-- [How to use Mocha and Chai] to write unit tests (BDD) for SAM implementations (via Robert Blixt)
+- [How to use Mocha and Chai](http://codepen.io/devghost/pen/eZWxmo) to write unit tests (BDD) for SAM implementations (via Robert Blixt)
 A contact manager web application built with [SAM and CSP](https://github.com/imnutz/sam-csp) ([Communicating Sequential Processes](http://jlongster.com/Taming-the-Asynchronous-Beast-with-CSP-in-JavaScript)) (@imnutz / [Son Ngoc](https://twitter.com/sonngoc))
 - [A simple CRUD application](https://github.com/jdubray/sam-samples/tree/master/crud-blog-lambda) running on AWS Lambda and DynamoDB for session management
 - [A simple counter](https://github.com/jdubray/sam-samples/tree/master/react-counter) using React 15.0.2 with JSX/Babel
