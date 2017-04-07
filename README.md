@@ -1,7 +1,9 @@
 # SAM
 
 **안내**
-이 문서의 원본은 [이곳](http://sam.js.org/) 입니다.
+이 문서의 원본은 [http://sam.js.org/](http://sam.js.org/) 입니다.
+
+저장소는 [ChangJoo-Park/SAM.js-korean](https://github.com/ChangJoo-Park/SAM.js-korean) 입니다.
 
 ## SAM 패턴
 
