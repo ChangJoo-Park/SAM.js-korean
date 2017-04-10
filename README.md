@@ -977,7 +977,7 @@ theme.statSummary = function(fa,label,number,link,linkLabel,color) {
 
 André Statlz는 다양한 [Unidirectional User Interface Architectures](http://staltz.com/unidirectional-user-interface-architectures.html)에 관한 논문을 저술했습니다. SAM과 가장 가까운 패턴은 [Famous](https://blog.famous.org/introducing-the-famous-framework/)입니다. 불행하게도 이들은 모델을 직접 변경하고 nap() 함수를 지원하지 않습니다.
 
-[React 2016 컴퍼런스에서 Andrew Clark의 발표](https://www.youtube.com/watch?v=Pm0uwncSCo4&feature=youtu.be&t=14366)는 다양한 접근 방식(React, Cycle, Elm)에 대한 간단한 공식으로 시작하는 훌륭한 전망을 말합니다.
+[React 2016 컨퍼런스에서 Andrew Clark의 발표](https://www.youtube.com/watch?v=Pm0uwncSCo4&feature=youtu.be&t=14366)는 다양한 접근 방식(React, Cycle, Elm)에 대한 간단한 공식으로 시작하는 훌륭한 전망을 말합니다.
 
 ```javascript
 V = f( M )
